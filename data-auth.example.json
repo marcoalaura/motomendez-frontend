@@ -1,0 +1,47 @@
+{
+  "menu": [
+    {
+      "url": "",
+      "icon": "desktop",
+      "color": "primary",
+      "label": "Escritorio"
+    },
+    {
+      "url": "configuracion",
+      "icon": "cog",
+      "color": "success",
+      "label": "Configuración",
+      "submenu": [
+        {
+          "url": "user",
+          "label": "Usuarios",
+          "permissions": {
+            "read": true,
+            "create": true,
+            "update": true,
+            "delete": true,
+            "print": true,
+            "filter": false
+          }
+        }
+      ]
+    }
+  ],
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcl9pZCI6MSwiZW1haWwiOiJhZG1pbkBhZ2V0aWMuZ29iLmJvIiwiZXhwIjoxNDczODQ2MzQyfQ.sLZ736srh8M3T_qN5xz_01CeBQO64cRw611_88vs4ms",
+  "user": {
+    "id": 1,
+    "password": "admin",
+    "last_login": "2016-08-04T14:14:34.993251Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Administrador",
+    "last_name": "Sistema",
+    "email": "admin@agetic.gob.bo",
+    "is_active": true,
+    "date_joined": "2016-08-03T00:15:13.668459Z",
+    "cargo": "Administrador",
+    "ci": 123456,
+    "rol": "admin",
+    "lang": "es"
+  }
+}

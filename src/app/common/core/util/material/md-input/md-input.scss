@@ -1,0 +1,194 @@
+// Shadows
+@import '../../../../styles/sass/_variables.scss';
+
+$shadow-inset: inset 0 2px 2px 0 rgba(0,0,0,.14);
+$shadow-0: 0 0 1px rgba(0, 0, 0, 0);
+$shadow-2: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+$shadow-3: 0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.2),0 1px 8px 0 rgba(0,0,0,.12);
+$shadow-4: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+$shadow-6: 0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12),0 3px 5px -1px rgba(0,0,0,.2);
+$shadow-8: 0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12),0 5px 5px -3px rgba(0,0,0,.2);
+
+// Font Sizes
+$mf-font-size: 1rem !default;
+$mf-active-font-size: $mf-font-size * 0.8 !default;
+$mf-active-top: -$mf-font-size !default;
+
+// Margin & Paddings
+$mf-gap: $mf-font-size * 1.5 !default;
+$mf-spacer: $mf-font-size / 8 !default;
+$mf-fieldset-margin: 0 0 $mf-gap * 2 !default;
+$mf-checkbox-gap: $mf-font-size * 2 !default;
+$mf-checkbox-top: 0 !default;
+$mf-radio-margin: $mf-font-size / -4 !default;
+
+// Colors
+$mf-input-color: #333 !default;
+$mf-border-color: #ccc !default;
+$mf-label-color: darken($mf-border-color, 10%) !default;
+$mf-active-color: darken($mf-border-color, 10%) !default;
+$mf-focus-color: $colorPrimary !default;
+$mf-error-color: #d9534f !default;
+
+// Animation
+$mf-transition-speed: 0.28s !default;
+
+.md-form-group {
+
+    position: relative;
+    margin-top: ($mf-gap * 1.5);
+    margin-bottom: ($mf-gap * 1.5);
+
+    input {
+        height: ($mf-font-size * 1.9);
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    select {
+        width: 100%;
+        font-size: $mf-font-size;
+        height: ($mf-font-size * 1.6);
+        padding: $mf-spacer $mf-spacer ($mf-spacer / 2);
+        background: none;
+        border: none;
+        line-height: 1.6;
+        box-shadow: none;
+    }
+
+    .md-control-label {
+        position: absolute;
+        top: ($mf-font-size / 4);
+        pointer-events: none;
+        padding-left: $mf-spacer;
+        z-index: 1;
+        color: $mf-label-color;
+        font-size: $mf-font-size;
+        font-weight: normal;
+        transition: all $mf-transition-speed ease;
+    }
+
+    .md-bar {
+        position: relative;
+        border-bottom: ($mf-font-size / 16) solid $mf-border-color;
+        display: block;
+        
+        &::before {
+            content: '';
+            height: 1px;
+            width: 0;
+            left: 50%;
+            bottom: ($mf-font-size / -16);
+            position: absolute;
+            background: $mf-focus-color;
+            transition: left $mf-transition-speed ease, width $mf-transition-speed ease;
+            z-index: 2;
+            border: 0;
+        }
+    }
+
+    &.md-select-group {
+        .md-bar {
+            top: -7px;
+        }
+
+        .btn-default {
+            padding-left: 0;
+        }
+
+        .ui-select-container::before {
+            top: 15px;
+        }
+    }
+
+    input,
+    textarea {
+        font-family: Montserrat;
+        display: block;
+        background: none;
+        padding: $mf-spacer $mf-spacer ($mf-spacer / 2);
+        font-size: $mf-font-size;
+        border-width: 0;
+        border-color: transparent;
+        line-height: 1.9;
+        width: 100%;
+        color: #888;
+        transition: all $mf-transition-speed ease;
+        box-shadow: none;
+    }
+
+    input[type="file"] {
+        line-height: 1;
+
+        ~ .md-bar {
+            display: none;
+        }
+    }
+
+    select,
+    input:focus,
+    input:valid,
+    input.form-file,
+    input.has-value,
+    textarea:focus,
+    textarea:valid,
+    textarea.form-file,
+    textarea.has-value,
+    .not-required-select {
+        color: $mf-input-color;
+
+        ~ .md-control-label {
+            font-size: $mf-active-font-size;
+            color: $mf-active-color;
+            top: $mf-active-top;
+            left: 0;
+        }
+    }
+
+    select,
+    input.not-required:valid,
+    input.not-required.form-file,
+    input.not-required.has-value,
+    textarea.not-required:valid,
+    textarea.not-required.form-file,
+    textarea.not-required.has-value {
+        color: $mf-input-color;
+
+        ~ .md-control-label {
+            top: ($mf-font-size / 4);
+            color: $mf-label-color;
+            font-size: $mf-font-size;
+            left: initial;
+        }
+    }
+
+    // input:invalid + .md-control-label + .md-bar, 
+    // textarea:invalid  + .md-control-label + .md-bar {
+    //     border-bottom: ($mf-font-size / 16) solid $colorDanger;
+    // }
+
+    select,
+    input,
+    textarea {
+        &:focus {
+            outline: none;
+
+            ~ .md-control-label {
+                color: $mf-focus-color;
+            }
+
+            ~ .md-bar {
+                &::before {
+                    width: 100%;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+
+.md-focus .md-control-label {
+    color: $colorPrimary !important;
+}

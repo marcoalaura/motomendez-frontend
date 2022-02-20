@@ -1,0 +1,38 @@
+<nav ng-class="getNavStyle(scroll)" class="text-right">
+  <!-- <div class="pdfviewer-control pageUp">
+    <button type="button" ng-click="goPrevious()"><span>&lt;</span></button>
+  </div>
+  <div class="pdfviewer-control pageDown">
+    <button type="button" ng-click="goNext()"><span>&gt;</span></button>
+  </div> -->
+  <div class="pdfviewer-control zoomOut">
+    <button type="button" class="btn btn-pdf waves-effect waves-light" ng-click="zoomOut()"><i class="fa fa-minus-square" aria-hidden="true"></i></button>
+  </div>
+  <div class="pdfviewer-button">
+    <button type="button" class="btn btn-pdf waves-effect waves-light" ng-click="fit()"><span>100%</span></button>
+  </div>
+  <div class="pdfviewer-control zoomIn">
+    <button type="button" class="btn btn-pdf waves-effect waves-light" ng-click="zoomIn()"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+  </div>
+  <div class="pdfviewer-button">
+    <button type="button" class="btn btn-pdf waves-effect waves-light" ng-click="rotate()"><span>Rotar</span></button>
+  </div>
+  <div class="pdfviewer-control download" ng-if="download">
+    <button type="button" class="btn btn-pdf waves-effect waves-light" ng-click="downloadFile()"><i class="fa fa-download" aria-hidden="true"></i></button>
+  </div>
+  <div class="pdfviewer-control page-num btn-pdf">
+    <span>Número de páginas:</span>
+    <!-- <input type="number" min=1 ng-model="pageNum" size="1"> -->
+    <span> {{pageCount}}</span>
+  </div>
+  <!-- <div class="pdfviewer-control presentationMode">
+    <button type="button" ng-click="fullscreen()"><span>-</span></button>
+  </div> -->
+  <!-- <div class="pdfviewer-control print" ng-if="!detectIE() && getMobileOS()==false && print">
+    <button type="button" ng-click="printFile()"><span>-</span></button>
+  </div> -->
+</nav>
+
+<hr class="separator">
+
+{{loading}}

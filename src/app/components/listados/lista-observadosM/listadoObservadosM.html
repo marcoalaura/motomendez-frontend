@@ -1,0 +1,71 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-th-list"></i>
+    <strong>Listado Mensual de Observados</strong>
+  </h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="alert alert-primary col-md-12" role="alert">
+        <strong>Para iniciar la búsqueda debe seleccionar una gestión:</strong>
+      </div>
+      <form name="form">
+        <div class="row">
+          <div class="col-md-3">
+            <b-select name="gestion" label="Gestión" ng-model="$ctrl.id_gestion" options="$ctrl.gestion" field="id_gestion" placeholder="Seleccione Gestión"
+              ng-required="true"></b-select>
+          </div>
+          <div class="col-md-3">
+            <b-select name="mes" label="Mes" ng-model="$ctrl.fid_mes" options="$ctrl.mes" field="mes" placeholder="Seleccione Mes" ng-required="true"></b-select>
+          </div>
+          <div class="col-md-3">
+            <b-input name="documento" label="Documento Identidad (opcional)" ng-model="$ctrl.documento" field="documento" placeholder=""></b-select>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-primary mx-0 mt-4" type="button" ng-click="$ctrl.generar_lista(form)" ng-disabled="form.$invalid">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Buscar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive mt-3 mr-3">
+        <table class="table table-bordered table-striped table-hover" ng-table="$ctrl.tableParams" style="text-align:center;" ng-hide="$data.length == 0 || !$data">
+          <thead>
+            <tr>
+              <td>
+                <strong> DOCUMENTO DE IDENTIDAD</strong>
+              </td>
+              <td>
+                <strong> APELLIDOS + NOMBRES</strong>
+              </td>
+              <td>
+                <strong> MUNICIPIO</strong>
+              </td>
+              <td>
+                <strong> OBSERVACIÓN</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="observados in $data">
+              <td>
+                {{observados.pcd.persona.documento_identidad}}
+              </td>
+              <td style="text-align: left;">
+                {{observados.pcd.persona.nombres}}
+              </td>
+              <td>
+                {{observados.pcd_dpa.municipio}} - {{observados.pcd_dpa.provincia}}/{{observados.pcd_dpa.departamento}}
+              </td>
+              <td style="text-align: left;">
+                {{observados.observacionTraducida}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

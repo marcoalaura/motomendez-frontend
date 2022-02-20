@@ -1,0 +1,19 @@
+<uib-select ng-if="$ctrl.typeSelect=='model'"
+  ng-model="$ctrl.ngModel"
+  items="$ctrl.items"
+  label="{{$ctrl.label}}"
+  key-text="{{$ctrl.key}}"
+  placeholder="Seleccione..."
+  ng-disabled="$ctrl.ngDisabled"
+  ng-required="$ctrl.ngRequired">
+</uib-select>
+<uib-select ng-if="$ctrl.typeSelect=='id'"
+  ng-model="$ctrl.ngModel"
+  items="$ctrl.items"
+  label="{{$ctrl.label}}"
+  key-value="id_parametro"
+  key-text="{{$ctrl.key}}"
+  placeholder="Seleccione..."
+  ng-disabled="$ctrl.ngDisabled"
+  ng-required="$ctrl.ngRequired">
+</uib-select>

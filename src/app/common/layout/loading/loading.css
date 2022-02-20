@@ -1,0 +1,51 @@
+@import '../../styles/sass/_variables.scss';
+
+app-loading {
+    display: none;
+}
+
+#loading-bar-spinner {
+    top: 22px !important;
+    left: initial !important;
+    right: 58px;
+
+    .spinner-icon {
+        display: inline-block;
+    }
+
+    .loading-text {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: $colorPrimary;
+        display: inline-block;
+        float: left;
+        font-size: .9rem;
+        margin: -1px 5px 0 0;
+    }
+
+    &.screen-locked {
+        position: fixed;
+        top: 0 !important;
+        left: 0 !important;
+        bottom: 0;
+        right: 0;
+        z-index: 10100;
+        background-color: rgba($colorPrimary, 0.75);
+
+        .loading-container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+
+            .loading-text {
+                background-color: transparent;
+                color: #ffffff;
+                font-size: 1.6rem;
+                margin: -9px 10px 0 0;
+            }
+        }
+    }
+}

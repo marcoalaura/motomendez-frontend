@@ -1,0 +1,146 @@
+@import '../../../../styles/sass/_variables.scss';
+
+/* ====================================
+           T O U R  H E L P
+==================================== */
+
+$borderArrow: rgba(255, 255, 255, 1);
+
+.tour-help-backdrop {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 100;
+
+    &.tour-transparent {
+        background-color: transparent;
+    }
+}
+.tour-popup {
+
+    &.md-help-content{ 
+        background-color: $borderArrow;
+
+        .md-help-header {
+            color: $colorPrimary;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1rem;
+            padding-bottom: 5px;
+            padding-top: 15px;
+            text-transform: uppercase;
+
+            md-icon, hr {
+                display: none;
+            }
+        }
+
+        .md-help-body {
+            color: #333;
+        }
+
+        // TOP
+        &.top {
+            &:after {
+                border-top: 7px solid $borderArrow;
+            }
+        }
+
+        &.top-right {
+            &:after {
+                border-top: 7px solid $borderArrow;
+            }
+        }
+
+        &.top-left {
+            &:after {
+                border-top: 7px solid $borderArrow;
+            }
+        }
+
+        // RIGHT
+        &.right {
+            &:after {
+                border-right: 7px solid $borderArrow;
+            }
+        }
+
+        &.right-top {
+            &:after {
+                border-right: 7px solid $borderArrow;
+            }
+        }
+
+        &.right-bottom {
+            &:after {
+                border-right: 7px solid $borderArrow;
+            }
+        }    
+
+        // BOTTOM
+        &.bottom {
+            &:after {
+                border-bottom: 7px solid $borderArrow;
+            }
+        }
+
+        &.bottom-right {
+            &:after {
+                border-bottom: 7px solid $borderArrow;
+            }
+        }
+
+        &.bottom-left {
+            &:after {
+                border-bottom: 7px solid $borderArrow;
+            }
+        }
+        
+        // LEFT
+        &.left {
+            &:after {
+                border-left: 7px solid $borderArrow;
+            }
+        }
+
+        &.left-top {
+            &:after {
+                border-left: 7px solid $borderArrow;
+            }
+        }
+
+        &.left-bottom {
+            &:after {
+                border-left: 7px solid $borderArrow;
+            }
+        }
+
+        .tour-help-buttons {
+
+            margin: 15px 0 0 0;
+            text-align: right;
+
+            .md-button {
+                font-size: .75rem;
+                margin: 0 2px;
+                padding: 0 4px;
+                min-width: 72px;
+                min-height: 34px;
+                height: 34px;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                md-icon {
+                    font-size: 1rem;
+                    line-height: 1.45rem;
+                    min-width: 1px;
+                    width: 12px;
+                }
+            }
+        }
+    }
+}

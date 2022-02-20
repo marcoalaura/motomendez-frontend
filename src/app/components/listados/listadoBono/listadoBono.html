@@ -1,0 +1,78 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-map-marker"></i>
+    <strong>Listado de Personas Habilitadas para el Cobro del Bono por Municipio</strong>
+  </h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="alert alert-primary col-md-12" role="alert">
+        <strong>Para una búsqueda más certera seleccione una gestión:</strong>
+      </div>
+      <form name="form">
+        <div class="row">
+          <div class="col-md-4">
+            <b-select name="gestion" label="Gestión" ng-model="$ctrl.id_gestion" options="$ctrl.gestion" field="id_gestion" placeholder="Seleccione Gestión"
+              ng-required="true"></b-select>
+          </div>
+          <div class="col-md-4">
+            <b-select name="mes" label="Mes" ng-model="$ctrl.fid_mes" options="$ctrl.mes" field="mes" placeholder="Seleccione Mes" ng-required="true"></b-select>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-primary mx-0 mt-4" type="button" ng-click="$ctrl.generar_lista(form)" ng-disabled="form.$invalid">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Buscar
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover" ng-table="$ctrl.tableParams" ng-hide="$data.length == 0 || !$data"
+          style="text-align:center;">
+          <thead>
+            <tr>
+              <td>
+                <strong> ACCIONES</strong>
+              </td>
+              <td>
+                <strong> DEPARTAMENTO</strong>
+              </td>
+              <td>
+                <strong> PROVINCIA</strong>
+              </td>
+              <td>
+                <strong> MUNICIPIO</strong>
+              </td>
+              <td>
+                <strong> ESTADO</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="detalle in $data">
+              <td>
+                <a href="" uib-tooltip="Ver Documento" ng-if="detalle.estado=='GENERADO'" ng-click="$ctrl.mostrar_pdf(detalle)">
+                  <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </td>
+              <td>
+                {{detalle.dpa.departamento}}
+              </td>
+              <td>
+                {{detalle.dpa.provincia}}
+              </td>
+              <td>
+                {{detalle.dpa.municipio}}
+              </td>
+              <td>
+                {{detalle.estado}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

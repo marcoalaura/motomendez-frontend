@@ -1,0 +1,5 @@
+/* Cargando todas las dependencias CSS */
+
+@import './base/_variables.css';
+@import './base/_fonts.css';
+@import './base/_base.css';

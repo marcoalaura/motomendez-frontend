@@ -1,0 +1,103 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-blind"></i>
+    <strong>Registro de tutores de personas con discapacidad</strong>
+  </h2>
+  <div class="card">
+    <div class="card-header" ng-if="$ctrl.rol=='MINISTERIO'">
+      <ng-form name="validador">
+        <div class="alert alert-primary col-md-12" role="alert">
+          <strong>Seleccione un municipio para una búsqueda específica:</strong>
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-12 col-md-6 col-lg-3">
+            <b-select name="departamento" label="Departamento" ng-model="$ctrl.id_dpa" options="$ctrl.departamentos" field="departamento"
+              ng-required="true" placeholder="Seleccione Departamento"></b-select>
+          </div>
+          <div class="form-group col-sm-12 col-md-6 col-lg-3">
+            <b-select name="provincia" label="Provincia" ng-model="$ctrl.fid_provincia" options="$ctrl.provincias" field="provincia"
+              ng-required="true" placeholder="Seleccione Provincia"></b-select>
+          </div>
+          <div class="form-group col-sm-12 col-md-6 col-lg-3">
+            <b-select name="municipio" label="Municipio" ng-model="$ctrl.cod_municipio" options="$ctrl.municipios" field="municipio"
+              ng-required="true" placeholder="Seleccione Municipio"></b-select>
+          </div>
+          <div class="form-group col-sm-12 col-md-6 col-lg-3">
+            <button class="btn btn-primary mt-3 float-left" ng-click="$ctrl.generar_reporte_lugar(validador)" ng-disabled="validador.$invalid">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Buscar
+            </button>
+          </div>
+        </div>
+      </ng-form>
+    </div>
+    <div class="card-header" ng-if="$ctrl.rol=='MUNICIPIO'">
+      <ng-form name="validador">
+        <div class="alert alert-primary col-md-12" role="alert">
+          <strong>Ingrese el número de documento de identidad para una búsqueda específica:</strong>
+        </div>
+        <div class="row center-block">
+          <div class="col-md-3"></div>
+          <div class="col-md-4">
+              <b-input label="Documento de Identidad" name="documento_identidad" ng-model="$ctrl.documento_identidad" placeholder="Ej: 54455443"
+              ng-required="false"></b-input>
+          </div>
+          <div class="col-md-2">
+            <br>
+            <button class="btn btn-primary mx-0 float-left" ng-click="$ctrl.generar_reporte_lugar(validador)" ng-disabled="validador.$invalid">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Buscar
+            </button>
+          </div>
+        </div>
+      </ng-form>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table table-striped table-hover" ng-table="$ctrl.tableParams" style="text-align:center;">
+          <thead>
+            <tr>
+              <td>
+                <strong>ACCIONES</strong>
+              </td>
+              <td>
+                <strong> DOCUMENTO DE IDENTIDAD</strong>
+              </td>
+              <td>
+                <strong> APELLIDOS + NOMBRES</strong>
+              </td>
+              <td>
+                <strong> TUTOR(A)</strong>
+              </td>
+              <td>
+                <strong> DOCUMENTO DE RESPALDO</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="listaGeneral in $data">
+              <td>
+                <a href="" uib-tooltip="Asignar Tutor" ng-click="$ctrl.asignar(listaGeneral)">
+                  <i class="fa fa-edit fa-2x"></i>
+                </a>
+              </td>
+              <td>
+                {{listaGeneral.persona.documento_identidad}}
+              </td>
+              <td style="text-align: left;">
+                {{listaGeneral.persona.nombres}}
+              </td>
+              <td style="text-align: left;">
+                {{listaGeneral.pcd_tutor[listaGeneral.pcd_tutor.length-1].persona.nombre_completo}}
+              </td>
+              <td>
+                {{listaGeneral.pcd_tutor[listaGeneral.pcd_tutor.length-1].documento_descripcion}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

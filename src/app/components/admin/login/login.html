@@ -1,0 +1,262 @@
+<div class="login container">
+    <div class="login-container" ng-if="!$ctrl.datos_prueba">
+      <div class="login-form">
+        <div class="login-logo">
+          <div class="logo-probolivia"></div>
+        </div>
+        <div class="text-center text-primary font-weight-bold" style="font-size: 25px; margin-bottom:50px;">
+          PLATAFORMA PLURINACIONAL DE INFORMACIÓN DE PERSONAS CON DISCAPACIDAD
+          <br>"EUSTAQUIO MOTO MÉNDEZ"
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 card-element_2 my-2">
+              <div class="card" ng-class="{'form-mediano': $ctrl.tamanio==1, 'form-grande': $ctrl.tamanio==2}">
+                <div style="border-top: 5px solid #274461">
+                  <h1 style="text-align:center; color:#274461; font-size: 18px;font-weight: bold; margin-bottom: 10px; margin-top: 15px;">
+                    <i class="px-2 fa fa-search"></i>
+                    CONSULTA PÚBLICA
+                  </h1>
+                </div>
+                <div class="card-body mt-0 pt-0">
+                  <!--   <form name="formLogin" ng-submit="$ctrl.signin()">
+                        <b-input name="ci" label="Número de CI" ng-model="$ctrl.ci" ng-required="false" icon="envelope-o"></b-input>
+                        <b-date name="fecha_nacimiento" label="Fecha de Nacimiento" ng-model="$ctrl.fechaNacimiento" ng-required="true" icon="envelope-o"></b-date>
+                        <b-input name="nombre_completo" label="Nombre Completo" ng-model="$ctrl.nombreCompleto" ng-required="true" icon="key"></b-input>
+                        <button md-effect class="btn btn-success btn-lg btn-block mt-4" type="submit" ng-disabled="formLogin.$invalid">
+                          <i class="fa fa-sign-in"></i> Iniciar sesión
+                        </button>
+                      </form> -->
+
+
+                  <uib-tabset active="active">
+                    <uib-tab index="0" heading="Busqueda" ng-click="$ctrl.tamanio=1">
+                      <form name="form1">
+                        <b-input name="ci" label="Número de CI" ng-model="$ctrl.ci" ng-required="true" icon="hashtag"></b-input>
+                        <b-date name="fecha_nacimiento" label="Fecha de Nacimiento" ng-model="$ctrl.fechaNacimiento" ng-required="true" icon="envelope-o"></b-date>
+                        <button md-effect class="btn btn-primary btn-lg btn-block mt-2" ng-disabled="form1.$invalid" ng-click="$ctrl.search(form1)">
+                          <i class="fa fa-search"></i> Buscar
+                        </button>
+                        <ul ng-if="$ctrl.FechaVigenteCliente">
+                          <li><font color='#FF0000'>Cambio de Municipio habilitado hasta el 30 de junio de la gestión 2018</font></li>
+                        </ul>
+                      </form>
+                    </uib-tab>
+                    <uib-tab index="1" ng-click="$ctrl.tamanio=0">
+                      <uib-tab-heading>
+                        <i class="fa fa-search"></i> Avanzada
+                      </uib-tab-heading>
+                      <form name="form2">
+                        <b-input name="nombre" label="Nombres" ng-model="$ctrl.nombres" ng-required="true" icon="user-circle"></b-input>
+                        <b-input name="primer_apellido" label="Primer Apellido" ng-model="$ctrl.primerApellido" ng-required="false" icon="user-circle"></b-input>
+                        <b-input name="segundo_apellido" label="Segundo Apellido" ng-model="$ctrl.segundoApellido" ng-required="false" icon="user-circle"></b-input>
+                        <b-date name="fecha_nacimiento" label="Fecha de Nacimiento" ng-model="$ctrl.fechaNacimiento" ng-required="true"></b-date>
+                        <button md-effect class="btn btn-primary btn-lg btn-block mt-2" ng-disabled="form2.$invalid" ng-click="$ctrl.busquedaAvanzada(form2)">
+                          <i class="fa fa-search"></i> Buscar
+                        </button>
+                        <ul ng-if="$ctrl.FechaVigenteCliente">
+                          <li><font color='#FF0000'>Cambio de Municipio habilitado hasta el 30 de junio de la gestión 2018</font></li>
+                        </ul>
+                      </form>
+                    </uib-tab>
+                  </uib-tabset>
+                </div>
+                <!--      <div class="card-body" style="border-top: 5px solid #274461">
+                  <div>
+                    <h1 style="text-align:center; color:#274461; font-size: 18px; font-weight: bold; margin-bottom: 10px; margin-top: 15px;">
+                      <i class="px-2 fa fa-info fa-4x"></i>
+                    </h1>
+                    <div class="text-primary text-justify mt-4">
+
+                      <div class="texto-titulo font-weight-bold">
+                        Si tiene dudas o consultas
+                      </div>
+                        <div class="mt-2">
+                          Contáctese con los teléfonos:
+                          <br>
+                          <ul>
+                            <li>
+                              2120441
+                              <i class="fa fa-phone ml-2" aria-hidden="true"></i>
+                              <br>
+                            </li>
+                            <li>
+                              67176743, 69796069
+                              <i class="fa fa-whatsapp text-success" aria-hidden="true"></i>
+                              <br>
+                            </li>
+                          </ul>
+
+                          o escriba al correo:
+                          <strong>soporte@agetic.gob.bo </strong>
+                        </div>
+                      </br>
+                        <a href="images/guia_usuario1.pdf" target="_blank"> Guía de Uso del Sistema <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i>
+                        </a>
+
+
+                      </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 card-element_2 my-2">
+              <div class="card" style="height: 350px;">
+                <div style="border-top: 5px solid #274461">
+                  <h1 style="text-align:center; color:#274461; font-size: 18px;font-weight: bold; margin-bottom: 34px; margin-top: 15px;">
+                    <i class="px-2 fa fa-building-o"></i>
+                    INICIAR SESIÓN
+                  </h1>
+                </div>
+                <div class="card-body">
+                  <form name="formLogin" ng-submit="$ctrl.signin()">
+                    <b-input name="correo" label="Correo Electrónico" ng-model="$ctrl.username" ng-required="true" icon="envelope-o"></b-input>
+                    <b-input name="password" label="Contraseña" ng-model="$ctrl.password" is-password="true" ng-required="true" icon="key"></b-input>
+                    <button md-effect class="btn btn-success btn-lg btn-block mt-4" type="submit" ng-disabled="formLogin.$invalid">
+                      <i class="fa fa-sign-in"></i> Iniciar sesión
+                    </button>
+                  </form>
+                  
+                    <button md-effect class="btn btn-default" ng-click="$ctrl.restaurar()">
+                      <u>Olvidé mi contraseña</u>
+                    </button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <div class="text-primary text-center mt-4">
+                <div class="texto-titulo font-weight-bold">
+                  Si tiene dudas o consultas
+                </div>
+                <div class="mt-2">
+                  Contáctese con los teléfonos:
+                  <br>
+                  <ul>
+                    <li>
+                      2184026
+                      <i class="fa fa-phone ml-2" aria-hidden="true"></i>
+                      <br>
+                    </li>
+                    <li>
+                      63195237
+                      <i class="fa fa-whatsapp text-success" aria-hidden="true"></i>
+                      <br>
+                    </li>
+                  </ul>
+
+                  o escriba al correo:
+                  <strong>soporte@agetic.gob.bo </strong>
+                </div>
+                </br>
+                <a href="images/guia_usuario1.pdf" target="_blank"> Guía de Uso del Sistema
+                  <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="login-container" ng-if="$ctrl.datos_prueba && !$ctrl.datosPcd">
+      <div class="message">
+        <div class="buscador buscador-resultado sin-datos">
+          <h3>
+            No se encontraron resultados
+          </h3>
+          <div layout="row">
+            <div class="logo-error"></div>
+            <div class="texto">
+              <p align="justify">
+                <span>No se encontraron resultados a su búsqueda. Verifique el documento de identidad ingresado.</span>
+              </p>
+            </div>
+            <button class="col-md-12 btn btn-danger" ng-click="$ctrl.login()">
+              <i class="fa fa-search"></i> Nueva búsqueda
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="$ctrl.datos_prueba && $ctrl.datosPcd">
+      <div class="message">
+        <div class="buscador buscador-resultado sin-datos">
+          <h3>
+            Resultado de la Búsqueda
+          </h3>
+          <div layout="row">
+            <!-- <div class="logo-exito"></div> -->
+            <div class="texto" ng-if="$ctrl.datosPcd.encontrado">
+              <p align="justify">
+                <!--  <span>La persona {{$ctrl.datos.nombre}} con carnet de identidad {{$ctrl.datos.ci}} es una persona con discapacidad
+                  y cuenta con su carnet vigente.</span> -->
+                <ul class="ml-0 pl-0">
+                  <li>
+                    <strong>Número de Documento: </strong>{{$ctrl.datosPcd.numero_documento}}</li>
+                  <li>
+                    <strong>Nombre Completo: </strong>{{$ctrl.datosPcd.nombre_completo}}</li>
+                  <li>
+                    <strong>Departamento: </strong>{{$ctrl.datosPcd.departamento}}</li>
+                  <li>
+                    <strong>Provincia: </strong>{{$ctrl.datosPcd.provincia}}</li>
+                  <li>
+                    <strong>Municipio: </strong>{{$ctrl.datosPcd.municipio}}</li>
+                </ul>
+                <div ng-if="$ctrl.datosPcd.observacion" class="text-danger">
+                  <span>NO HABILITADO: {{$ctrl.datosPcd.mensaje_observacion}}</span>
+                </div>
+                <div class="table-responsive mt-3 mr-3">
+                  <table class="table table-bordered table-striped table-hover" style="text-align:center;" ng-if="$ctrl.datosPcd.datos_mes">
+                    <thead>
+                      <tr>
+                        <td>
+                          <strong> MES </strong>
+                        </td>
+                        <td>
+                          <strong> OBSERVACIÓN</strong>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="observadoMes in $ctrl.datosPcd.datos_mes">
+                        <td>
+                          {{observadoMes.mes}}
+                        </td>
+                        <td ng-class="observadoMes.observado==true?'text-danger':'text-primary'">
+                          <span ng-if="observadoMes.observado === true">NO HABILITADO: {{observadoMes.observacion}}</span>
+                          <span ng-if="observadoMes.observado === false">{{observadoMes.observacion}}</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </p>
+            </div>
+            <div ng-if="!$ctrl.datosPcd.encontrado">
+                <div class="buscador buscador-resultado sin-datos">
+                    <div layout="row">
+                      <div class="texto">
+                        <p align="justify">
+                          <span>No se encontraron resultados a su búsqueda.</span>
+                        </p>
+                        <p align="justify">
+                          <span>Usted no se encuentra registrado en la Plataforma para la <b>presente gestión</b> o el documento de identidad ingresado no es correcto.</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <button class="col-md-12 btn btn-success waves-effect waves-light" ng-click="$ctrl.login()">
+              <i class="fa fa-search"></i> Nueva búsqueda
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

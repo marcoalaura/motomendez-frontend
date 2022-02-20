@@ -1,0 +1,10 @@
+<div class="document-area" ng-if="!$ctrl.base64 && !$ctrl.pdfUrl">
+  <div class="loading">
+    <h3>Cargando documento, por favor espere ...</h3>
+  </div>
+</div>
+<div class="pdfviewer" ng-if="$ctrl.base64 || $ctrl.pdfUrl" style="height:{{$ctrl.height}};">
+  <ng-pdf class="ng-pdf" nview="{{$ctrl.nview}}" data="$ctrl.pdfUrl" data64="$ctrl.base64" style="height:{{$ctrl.heightContentPdf}}"
+  name="{{$ctrl.name}}" scale="{{$ctrl.scale}}" page="{{$ctrl.page}}"
+  download="{{$ctrl.download}}" print="{{$ctrl.print}}" open="{{$ctrl.open}}"></ng-pdf>
+</div>

@@ -1,0 +1,300 @@
+@import '../../styles/sass/_variables.scss';
+
+:root {
+    --height-navbar: 60px;
+    --height-user: 100px;
+    --width-collapse: 72px;
+}
+
+app-sidenav.no-sidenav {
+    height: 60px;
+
+    & + app-navbar + .main,
+    & + app-navbar + .main + app-footer {
+        padding-left: 0;
+    }
+
+    & + app-navbar {
+        .btn-toggle {
+            display: none;
+        }
+    }
+}
+
+app-sidenav.sidenav-close {
+
+    &:not(:hover) {
+        width: var(--width-collapse);
+        transition: width 0.2s ease 0s;
+
+        .sidenav {
+
+            &-title,
+            &-user-info,
+            &-submenu,
+            &-item-text,
+            &-item-arrow {
+                display: none;
+            }
+
+            &-item {
+                height: 60px;
+                padding-top: 5px;
+            }
+
+            &-user {
+                padding: 0;
+                height: 80px;
+
+                &-photo {
+                    margin-left: 10px;
+                }
+            }
+
+            &-container {
+                padding-top: calc(var(--height-navbar) + var(--height-user) - 20px);
+            }
+
+            &-logo {
+                width: var(--width-collapse);
+
+                &-probolivia {
+                    width: 70px;
+                    margin-top: 7px;
+                }
+
+                &-promueve {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    & + app-navbar,
+    & + app-navbar + .main,
+    & + app-navbar + .main + app-footer {
+        padding-left: var(--width-collapse);
+        transition: padding-left 0.2s ease 0s;
+    }
+}
+
+.sidenav {
+    position: relative;
+    height: 100%;
+
+    &-app {
+        background-color: white;
+        font-size: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    &-logo {
+        color: #f0f0f0;
+        display: inline-block;
+        font-size: 20px;
+        height: var(--height-navbar);
+        line-height: var(--height-navbar);
+        text-align: center;
+        width: 60px;
+        position: relative;
+
+        &-sistema {
+            background-image: url('../../../../assets/images/agetic.png');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            display: inline-block;
+            height: 50px;
+            left: 10px;
+            position: absolute;
+            top: 4px;
+            width: 42px;
+        }
+    }
+
+    &-title {
+        color: $colorPrimary;
+        color: #1f3853;
+        display: inline-block;
+        font-size: 1.2rem;
+        font-weight: 300;
+        line-height: 1.3rem;
+        padding: 10px 0 0 5px;
+        padding-right: 0;
+        vertical-align: top;
+        width: 200px;
+    }
+
+    &-user {
+        background-color: lighten($colorInfo, 10%);
+        font-size: 0;
+        height: var(--height-user);
+        left: 0;
+        padding: 10px 0;
+        position: absolute;
+        overflow: hidden;
+        right: 0;
+        top: var(--height-navbar);
+        z-index: 1;
+
+        &-photo { 
+            border: 3px solid white;
+            color: white;
+            display: inline-block;
+            font-size: 36px;
+            height: 50px;
+            line-height: 42px;
+            margin: 15px;
+            text-align: center;
+            vertical-align: top;
+            width: 50px;
+        }
+
+        &-info {
+            display: inline-block;
+            padding: 20px 10px 0 0;
+            vertical-align: top;
+            width: 180px;                        
+        }
+
+        &-name {
+            font-size: 16px;
+            margin: 0;
+            color: #ffffff;
+            display: block;
+            width: 175px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &-mail {
+            font-size: .85rem;
+            line-height: 1rem;
+            margin: 0;
+            color: #f0f0f0;
+            font-weight: 500;
+            display: block;
+            width: 175px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &-container {
+        padding: calc(var(--height-navbar) + var(--height-user)) 0 0 0;
+        height: 100%;
+    }
+
+    &-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    &-open {
+
+        .sidenav-submenu {
+            transition: all 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+        }
+    }
+
+    &-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        color: white;
+        display: block;
+        font-size: .9rem;
+        min-height: 50px;
+        line-height: 48px;
+        padding: 0 10px 0 20px;
+        position: relative;
+        text-decoration: none;
+        transition: all 0.2s ease 0s;
+
+        &:hover, &:active, &:focus {
+            background-color: darken($colorSidenav, 8%);
+            color: #f0f0f0;
+            text-decoration: none;
+            outline: 0;
+            transition: all 0.2s ease 0s;
+        }
+
+        &-text {
+            margin: 0;
+        }
+
+        &-arrow {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-size: 14px;
+            transition: all 0.2s ease 0s;
+        }
+
+        &.active {
+            .sidenav-item-arrow {
+                transform: rotate(90deg);
+                transition: all 0.2s ease 0s;
+            }
+        }
+    }
+
+    &-submenu {
+        background-color: darken(white, 0%);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 0;
+        overflow: hidden;
+        transition: all 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+
+        &-item {
+            color: #555555;
+            display: block;
+            font-size: .85rem;
+            line-height: 44px;
+            padding: 0 10px 0 70px;
+            transition: all 0.2s ease 0s;
+
+            &:hover, &:active, &:focus, &.active {
+                background-color: darken(white, 5%);
+                border-left: 5px solid lighten($colorSidenav, 5%);
+                color: $colorSidenav;
+                text-decoration: none;
+                outline: 0;
+                transition: all 0.2s ease 0s;
+            }
+        }    
+
+        & > li {            
+            &:first-child {
+                padding-top: 10px;
+            }
+
+            &:last-child {
+                padding-bottom: 10px;
+            }
+        } 
+    }
+
+    &-icon {
+        /* color: white; */
+        display: inline-block;
+        font-size: 15px;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 15px;
+        text-align: center;
+        width: 30px;
+        margin-top: 10px;
+        vertical-align: top
+    }
+
+}

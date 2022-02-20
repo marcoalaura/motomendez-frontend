@@ -1,0 +1,86 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-th-list"></i>
+    <strong>Corte anual de personas con discapacidad</strong>
+  </h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="alert alert-primary col-md-12" role="alert">
+        <strong>Para realizar la búsqueda puede ingresar cualquiera de los datos:</strong>
+      </div>
+      <form name="form">
+        <div class="row">
+          <div class="col-md-2">
+            <b-select name="gestion" label="Gestión" ng-model="$ctrl.id_gestion" options="$ctrl.gestion" field="id_gestion" placeholder="Seleccione Gestión"
+            ng-required="true"></b-select>
+          </div>
+          <div class="col-md-2">
+              <b-input label="Documento de Identidad" name="documento_identidad" ng-model="$ctrl.documento_identidad"></b-input>
+          </div>
+          <div class="col-md-2">
+              <b-input label="Primer Apellido" name="primer_apellido" ng-model="$ctrl.primer_apellido"></b-input>
+          </div>
+          <div class="col-md-2">
+              <b-input label="Segundo Apellido" name="segundo_apellido" ng-model="$ctrl.segundo_apellido"></b-input>
+          </div>
+          <div class="col-md-2">
+              <b-input label="Nombres" name="nombres" ng-model="$ctrl.nombres"></b-input>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary mx-0 mt-4" type="button" ng-click="$ctrl.generar_lista(form)" ng-disabled="form.$invalid">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Buscar
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover" ng-table="$ctrl.tableParams" style="text-align:center;" ng-hide="$data.length == 0 || !$data">
+            <thead>
+                <tr>
+                  <td>
+                    <strong> DOCUMENTO DE IDENTIDAD</strong>
+                  </td>
+                  <td>
+                    <strong> APELLIDOS + NOMBRES</strong>
+                  </td>
+                  <td>
+                    <strong> FECHA DE NACIMIENTO</strong>
+                  </td>
+                  <td>
+                    <strong> MUNICIPIO</strong>
+                  </td>
+                  <td>
+                    <strong> OBSERVACIÓN</strong>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="persona in $data">
+                  <td>
+                    {{persona.nro_documento}}
+                  </td>
+                  <td style="text-align: left;">
+                      {{persona.primer_apellido}} {{persona.segundo_apellido}} {{persona.nombres}}
+                  </td>
+                  <td>
+                    {{persona.fecha_nacimiento}}
+                  </td>
+                  <td>
+                    {{persona.nombre_municipio}}
+                  </td>
+                  <td style="text-align: left;">
+                    <span>{{persona.observacion_contrastacion}} {{persona.observacion}} </span>
+                    <!-- <span ng-if="persona.nro_documento==null"> CON OBSERVACIÓN SEGIP</span> -->
+                    <!-- <span ng-if="persona.estado=='OBSERVADO_REG'"> CON OBSERVACIONES DE SIGEP</span>
+                    <span ng-if="persona.nro_documento==null"> CON OBSERVACIÓN SEGIP</span> -->
+                  </td>
+                </tr>
+              </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<form name="validador" enctype="multipart/form-data">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-file-text-o"></i> {{$ctrl.tituloPagina}}
+    </h5>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-secondary">
+      <p>Instrucciones para importar el archivo CSV</p>
+      <ol>
+          <li>
+            Descargue el <strong><i class="fa fa-file mr-1"></i> archivo base</strong> haciendo
+            <strong><a href="images/archivo.csv" target="_blank">click aquí.</a></strong>
+          </li>
+          <li><strong>No modifique</strong> la primera fila (cabecera).</li>
+          <li>La columna <strong>fecha_nacimento</strong> debe estar en formato <strong>dd/mm/yyyy</strong>.</li>
+          <li><strong>Guarde</strong> el archivo en formato <strong>“.csv”</strong>  empleando como separador el símbolo <strong>~</strong>.</li>
+      </ol>
+    </div>
+    <div class="card-block">
+      <div class="form-group">
+        <p for="exampleInputFile">Seleccione el archivo que desea importar:</p>
+        <input type="file" class="form-control-file" file-model="$ctrl.archivo" id="exampleInputFile" aria-describedby="fileHelp">
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cancelar
+    </button>
+    <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.enviarCSV(validador)">
+      <i class="fa fa-upload"></i> Subir CSV
+    </button>
+  </div>
+</form>

@@ -1,0 +1,117 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-map"></i>
+    <strong>{{$ctrl.tituloPagina}}</strong>
+  </h2>
+  <div class="card" ng-if="$ctrl.Vigencia">
+    <div class="card-header">
+      <div class="alert alert-primary col-md-12" role="alert">
+        <strong>Ingrese el número de Documento de Identidad</strong>
+      </div>
+            <form ng-submit="$ctrl.ok(formulario)" name="formulario">
+              <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+                  <b-input name="ci_pcd" placeholder="Número de carnet del PCD" label="Número de C.I." ng-model="$ctrl.ci_pcd" ng-disabled="$ctrl.encontrado"></b-input>
+                </div>
+                <div class="col-md-2"><br>
+                  <button md-effect type="button" class="btn btn-primary mx-0 float-left" ng-click="$ctrl.buscarPCD()" ng-disabled="$ctrl.encontrado || !$ctrl.ci_pcd">
+                    <i class="fa fa-search"></i> Buscar
+                  </button>
+                </div>
+              </div>
+              <div class="alert alert-success" ng-if="$ctrl.Realizado">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <i class="fa fa-user"></i> SE HA REALIZADO EL REGISTRO DE CAMBIO DE MUNICIPIO SATISFACTORIAMENTE.
+              </div>  
+              <br><div class="card" ng-if="$ctrl.encontrado">
+                <div class="card-body">
+                  <div id="datospersonales">
+                    <div class="alert alert-info">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <i class="fa fa-user"></i> Datos Personales del PCD
+                    </div>
+                    <div class="card-header">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <label><b>Número documento: </b></label>
+                          <label class="md-control-label">{{ $ctrl.datosPcd.persona.documento_identidad }}</label>
+                        </div>
+                        <div class="col-sm-12">
+                          <label><b>Fecha de nacimiento: </b></label>
+                          <label class="md-control-label">{{ $ctrl.datosPcd.fecha_nac }}</label>
+                        </div>
+                        <div class="col-sm-12">
+                          <label><b>Nombre y Apellidos: </b></label>
+                          <label class="md-control-label">{{ $ctrl.datosPcd.nombre_completo }}</label>
+                        </div>
+                        <div class="col-sm-12">
+                          <label><b>Municipio Registrado: </b></label>
+                          <label class="md-control-label">{{ $ctrl.datosPcd.pcd_dpa.departamento }} - {{ $ctrl.datosPcd.pcd_dpa.provincia }} - {{ $ctrl.datosPcd.pcd_dpa.municipio }}</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <div id="datosdomicilio">
+                    <div class="alert alert-info">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <i class="fa fa-home"></i> Indique los nuevos datos de su municipio
+                    </div>
+                    <div class=" card ">
+                      <div class="card-header">
+                        <div class="row">
+                          <div class="col-sm-4">
+                            <b-select label="Departamento" name="departamento" options="$ctrl.departamentos" ng-model="$ctrl.departamento" field="departamento" 
+                            placeholder="Seleccione departamento" ng-required="false" ng-if="!$ctrl.cod_rol_municipio" ng-disabled="$ctrl.Realizado"></b-select>
+                          </div>
+                          <div class="col-sm-4">
+                            <b-select label="Provincia" name="provincia" options="$ctrl.provincias" ng-model="$ctrl.provincia" field="provincia" 
+                            placeholder="Seleccione provincia" ng-required="false" ng-if="!$ctrl.cod_rol_municipio" ng-disabled="$ctrl.Realizado"></b-select>
+                          </div>
+                          <div class="col-sm-4">
+                            <b-select label="Municipio" name="municipio" options="$ctrl.municipios" ng-model="$ctrl.municipio" field="municipio" 
+                            placeholder="Seleccione municipio" ng-required="false" ng-if="!$ctrl.cod_rol_municipio" ng-disabled="$ctrl.Realizado"></b-select>
+                          </div>
+                          <div class="col-sm-12">
+                            <b-input name="nombre_municipio" placeholder="Nombre del municipio" label="Nombre del Municipio" ng-model="$ctrl.nombre_municipio" 
+                            ng-disabled="true" ng-if="$ctrl.cod_rol_municipio"></b-input>
+                          </div>
+                          <div class="col-sm-12">
+                              <b-input name="direccion" placeholder="Zona / Calle o Avenida / Número" label="Dirección" ng-model="$ctrl.direccion" ng-disabled="$ctrl.Realizado"></b-input>
+                            </div>
+                          <div class="col-sm-12">
+                            <br><br>
+                            <label>
+                            <input type="checkbox" ng-model="$ctrl.acepto" ng-disabled="$ctrl.Realizado"> La información contenida en el presente Formulario tiene la calidad de Declaración Jurada.
+                            </label>
+                          </diV>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer" ng-if="$ctrl.encontrado">
+                  <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.terminar()" ng-if="$ctrl.Realizado">
+                      <i class="fa fa-check"></i> Terminar</button>
+                <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()" ng-if="!$ctrl.Realizado">
+                    <i class="fa fa-close"></i> Cancelar</button>
+                <button type="submit" md-effect class="btn btn-primary" ng-disabled="!$ctrl.acepto" ng-if="!$ctrl.Realizado">
+                  <i class="fa fa-check"></i>{{'Guardar'}}
+                </button>
+              </div>
+            </form>
+    </div>
+  </div>
+  <div class="card" ng-if="!$ctrl.Vigencia">
+      <div class="card-header">
+          <div class="row">
+            <div class="alert alert-info">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <i class="fa fa-user"></i> No se encuentra dentro de las fechas permitidas para realizar el registro de cambio de domicilio.
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

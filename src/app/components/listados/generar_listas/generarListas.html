@@ -1,0 +1,100 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-money"></i>
+    <strong>Habilitación de listas </strong>
+  </h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="table-responsive">
+        <h4 class="card-title">
+          Listado de corte anual
+        </h4>
+        <table class="table table-striped table-hover" ng-table="$ctrl.tableParams" style="text-align:center;">
+          <thead>
+            <tr>
+              <!-- <td>
+                <strong>ACCIONES</strong>
+              </td> -->
+              <td> 
+                <strong>ESTADO</strong>
+              </td>
+              <td>
+                <strong>GESTIÓN</strong>
+              </td>
+              <!-- <td>
+                <strong>DETALLE</strong>
+              </td> -->
+              <td>
+                <strong>FECHA DE GENERACIÓN</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="listas_generadas in $ctrl.listas_generadas">
+              <!-- <td>
+                {{listas_generadas.fecha_envio | date : 'dd/MM/yyyy'}}
+                <a href="" uib-tooltip="Ver Documento" ng-click="$ctrl.mostrar_pdf(listas_generadas.id_gestion)">
+                  <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </td> -->
+              <td>
+                {{listas_generadas.estado}}
+              </td>
+              <td> {{listas_generadas.id_gestion}}
+              </td>
+              <!-- <td>
+                <a href="" ng-click="$ctrl.beneficios(listas_generadas)">Ver</a>
+              </td> -->
+              <td>
+                {{listas_generadas._fecha_creacion | date : 'dd/MM/yyyy'}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div class="card" ng-show="$ctrl.var">
+        <div class="card-body">
+          <h4 class="card-title">
+            Listado de reportes mensual del <strong>{{$ctrl.beneficiario.id_gestion}}</strong>
+          </h4>
+          <table class="table table-striped table-hover" ng-table="$ctrl.tableParams" style="text-align:center;">
+            <thead>
+              <tr>
+                <td>
+                  <strong> ESTADO</strong>
+                </td>
+                <td>
+                  <strong>MES</strong>
+                </td>
+                <td>
+                  <strong>FECHA DE GENERACIÓN</strong>
+                </td>
+                <td>
+                  <strong>FECHA DE ENVÍO</strong>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="listas_mensuales in $ctrl.beneficiario.mes">
+                <td>
+                  {{listas_mensuales.estado}}
+                </td>
+                <td>
+                  {{listas_mensuales.mes}}
+                </td>
+                <td>
+                  {{listas_mensuales._fecha_creacion | date : 'dd/MM/yyyy'}}
+                </td>
+                <td>
+                  {{listas_mensuales.fecha_envio | date : 'dd/MM/yyyy'}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>

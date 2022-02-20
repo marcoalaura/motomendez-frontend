@@ -1,0 +1,354 @@
+<div class="container">
+  <h2 class="page-title"><i class="fa fa-cogs"></i> Ejemplos de <strong>Componentes</strong></h2>
+  <div class="card">
+    <div class="card-body">
+      <h3>Botones</h3>
+      <div>
+        <button uib-tooltip="Botón default tooltip" md-effect class="btn btn-default">
+          <i class="fa fa-home"></i> Botón default
+        </button>
+        <button uib-tooltip="Botón primary tooltip" tooltip-placement="top" md-effect class="btn btn-primary">
+          <i class="fa fa-check"></i> Botón primary
+        </button>
+        <button uib-tooltip="Botón success tooltip" tooltip-placement="right" md-effect class="btn btn-success">
+          <i class="fa fa-book"></i> Botón success
+        </button>
+        <button uib-tooltip="Botón info tooltip" tooltip-placement="bottom" md-effect class="btn btn-info">
+          <i class="fa fa-cog"></i> Botón info
+        </button>
+        <button uib-tooltip="Botón warning tooltip" tooltip-placement="left" md-effect class="btn btn-warning">
+          <i class="fa fa-user-o"></i> Botón warning
+        </button>
+        <button uib-tooltip="Botón danger tooltip" md-effect class="btn btn-danger">
+          <i class="fa fa-automobile"></i> Botón danger
+        </button>
+      </div>
+      <hr>
+
+      <h3>Botones outline</h3>
+      <div>
+        <button md-effect class="btn btn-outline-default"><i class="fa fa-home"></i> Botón default</button>
+        <button md-effect class="btn btn-outline-primary"><i class="fa fa-check"></i> Botón primary</button>
+        <button md-effect class="btn btn-outline-success"><i class="fa fa-book"></i> Botón success</button>
+        <button md-effect class="btn btn-outline-info"><i class="fa fa-cog"></i> Botón info</button>
+        <button md-effect class="btn btn-outline-warning"><i class="fa fa-user-o"></i> Botón warning</button>
+        <button md-effect class="btn btn-outline-danger"><i class="fa fa-automobile"></i> Botón danger</button>
+      </div>
+      <hr>
+
+      <h3>Dropdown</h3>
+      <div class="btn-group" uib-dropdown is-open="status.isopen">
+        <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+          Button dropdown <span class="caret"></span>
+        </button>
+        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <h6 class="dropdown-header">Dropdown header</h6>
+          <a class="dropdown-item" href="">Action</a>
+          <a class="dropdown-item" href="">Another action</a>
+          <a class="dropdown-item" href="">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">Separated link</a>
+        </div>
+      </div>
+      <div class="btn-group" uib-dropdown is-open="status.isopen2">
+        <button type="button" class="btn btn-outline-success" uib-dropdown-toggle>
+          Button dropdown <span class="caret"></span>
+        </button>
+        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <h6 class="dropdown-header">Dropdown header</h6>
+          <a class="dropdown-item" href="">Action</a>
+          <a class="dropdown-item" href="">Another action</a>
+          <a class="dropdown-item" href="">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">Separated link</a>
+        </div>
+      </div>
+      <div class="btn-group" uib-dropdown is-open="status.isopen3">
+        <button type="button" class="btn btn-secondary">Action</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" uib-dropdown-toggle>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+          <h6 class="dropdown-header">Dropdown header</h6>
+          <a class="dropdown-item" href="">Action</a>
+          <a class="dropdown-item" href="">Another action</a>
+          <a class="dropdown-item" href="">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="">Separated link</a>
+        </div>
+      </div>
+      <hr>
+
+      <h3>Popup</h3>
+      <button uib-popover="Contenido del popover" popover-title="Título del popover" type="button" class="btn btn-default">Popover default</button>
+      <button uib-popover="Contenido del popover" popover-title="Título del popover" popover-placement="top" type="button" class="btn btn-primary">Popover top</button>
+      <button uib-popover="Contenido del popover" popover-title="Título del popover" popover-placement="right" type="button" class="btn btn-success">Popover right</button>
+      <button uib-popover="Contenido del popover" popover-title="Título del popover" popover-placement="bottom" type="button" class="btn btn-danger">Popover bottom</button>
+      <button uib-popover="Contenido del popover" popover-title="Título del popover" popover-placement="left" type="button" class="btn btn-info">Popover left</button>
+      <hr>
+
+      <h3>Tabs</h3>
+      <uib-tabset active="active">
+        <uib-tab index="0" heading="Static title">Static content</uib-tab>
+        <uib-tab index="$index + 1" ng-repeat="tab in $ctrl.tabs" heading="{{tab.title}}" disable="tab.disabled">
+          {{tab.content}}
+        </uib-tab>
+        <uib-tab index="3">
+          <uib-tab-heading>
+            <i class="fa fa-bell"></i> Alert!
+          </uib-tab-heading>
+          I've got an HTML heading, and a select callback. Pretty cool!
+        </uib-tab>
+      </uib-tabset>
+      <hr>
+
+      <h3>Modal</h3>
+      <!-- Button trigger modal -->
+      <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.openModal()">
+        <i class="fa fa-plus"></i> Abrir modal
+      </button>
+      <button md-effect type="button" class="btn btn-success" ng-click="$ctrl.openModal('lg')">
+        <i class="fa fa-plus"></i> Abrir modal <strong>lg</strong>
+      </button>
+      <button md-effect type="button" class="btn btn-default" ng-click="$ctrl.openModal('sm')">
+        <i class="fa fa-plus"></i> Abrir modal <strong>sm</strong>
+      </button>
+      <hr>
+      <button md-effect type="button" class="btn btn-secondary" ng-click="$ctrl.openAlert()">
+        <i class="fa fa-bell"></i> Abrir Alert
+      </button>
+      <button md-effect type="button" class="btn btn-secondary" ng-click="$ctrl.openConfirm()">
+        <i class="fa fa-warning"></i> Abrir Confirm
+      </button>
+      <hr>
+
+      <h3>Mensajes</h3>
+      <button md-effect type="button" ng-click="$ctrl.openMessage('success')" class="btn btn-secondary">Abrir Success</button>
+      <button md-effect type="button" ng-click="$ctrl.openMessage('info')" class="btn btn-secondary">Abrir Info</button>
+      <button md-effect type="button" ng-click="$ctrl.openMessage('error')" class="btn btn-secondary">Abrir Error</button>
+      <button md-effect type="button" ng-click="$ctrl.openMessage('warning')" class="btn btn-secondary">Abrir Warning</button>
+      <hr>
+
+      <h3>Alertas</h3>
+      <div class="alert alert-primary" role="alert">
+        <strong>Well done!</strong> You successfully read this important alert message.
+      </div>
+      <div class="alert alert-success" role="alert">
+        <strong>Well done!</strong> You successfully read this important alert message.
+      </div>
+      <div class="alert alert-info" role="alert">
+        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+      </div>
+      <div class="alert alert-warning" role="alert">
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+      </div>
+      <div class="alert alert-danger" role="alert">
+        <strong>Oh snap!</strong> Change a few things up and try submitting again.
+      </div>
+
+      <hr>
+      <h3>Badge</h3>
+      <span class="badge badge-default">Default</span>
+      <span class="badge badge-primary">Primary</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-danger">Danger</span>
+      <hr>
+
+      <h3>Texto</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, modi, eaque adipisci quia quas accusantium beatae
+        quisquam laudantium ullam laboriosam fuga omnis nesciunt illum quasi maiores? Assumenda consectetur veritatis quod
+        veniam iure aliquid dolorem vitae dolores sit pariatur explicabo ut cumque a eveniet voluptatum reiciendis, fugit
+        ad neque, perspiciatis tempora.</p>
+      <p>Recusandae, est. Vitae asperiores labore ratione aut voluptatum! Recusandae quisquam velit dolorum itaque asperiores
+        eius amet possimus mollitia quos eum ipsum doloremque id explicabo temporibus nihil, commodi soluta sit aut fugit
+        labore voluptatum excepturi iure. Perspiciatis obcaecati minus dicta quod, fugiat illo eligendi sequi, nesciunt ullam,
+        accusantium veritatis praesentium fuga!</p>
+
+      <h3 class="card-title">Formulario</h3>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="exampleSelect1">Example select</label>
+          <select class="form-control" id="exampleSelect1">
+            <option ng-repeat="item in $ctrl.items">{{ item.text }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="input">Example ui-select</label>
+          <ui-select ng-model="$ctrl.item.selected" theme="bootstrap" ng-disabled="$ctrl.disabled" title="Seleccione un item">
+            <ui-select-match placeholder="Seleccione o busque un item de la lista...">{{$select.selected.text}}</ui-select-match>
+            <ui-select-choices repeat="item in $ctrl.items | filter: $select.search">
+              <span ng-bind-html="item.text | highlight: $select.search"></span>
+              <small ng-bind-html="item.code | highlight: $select.search"></small>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+        <div class="form-group">
+          <label for="exampleSelect2">Example multiple select</label>
+          <select multiple class="form-control" id="exampleSelect2">
+            <option ng-repeat="item in $ctrl.items">{{ item.text }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleTextarea">Example textarea</label>
+          <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+          <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
+        <fieldset class="form-group">
+          <legend>Radio buttons</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              Option one is this and that&mdash;be sure to include why it's great
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+              Option two can be something else and selecting it will deselect option one
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+              Option three is disabled
+            </label>
+          </div>
+        </fieldset>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input">
+            Check me out
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <hr>
+
+      <h3>Material Design Form</h3>
+      <form>
+        <md-input label="Nombre" ng-model="$ctrl.field1"></md-input>
+        <md-input label="Apellido" ng-model="$ctrl.field2" required></md-input>
+        <md-textarea label="Descripción" ng-model="$ctrl.field3"></md-textarea>
+
+        <div class="md-form-group md-select-group" md-event-label>
+          <ui-select ng-model="$ctrl.item2.selected" class="md-select" theme="bootstrap" ng-disabled="$ctrl.disabled" title="Seleccione un item">
+            <ui-select-match placeholder="Seleccione o busque un item de la lista...">{{$select.selected.text}}</ui-select-match>
+            <ui-select-choices repeat="item in $ctrl.items | filter: $select.search">
+              <span ng-bind-html="item.text | highlight: $select.search"></span>
+              <small ng-bind-html="item.code | highlight: $select.search"></small>
+            </ui-select-choices>
+          </ui-select>
+          <label class="md-control-label" for="input">Select material</label>
+          <i class="md-bar"></i>
+        </div>
+        <!-- <md-select items="$ctrl.items" ng-model="$ctrl.field4" label="Lista"></md-select> -->
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Check this custom checkbox</span>
+        </label>
+        <br>
+        <label class="custom-control custom-radio">
+          <input id="radio1" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Toggle this custom radio</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input id="radio2" name="radio" type="radio" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Or toggle this other custom radio</span>
+        </label>
+      </form>
+      <hr>
+
+      <h3>Datepicker</h3>
+      <div uib-datepicker ng-model="$ctrl.fecha" datepicker-options="$ctrl.dateOptions" class="well well-sm"></div>
+      <hr>
+
+      <h3>Datepicker Popup</h3>
+      <div class="form-group">
+        <label>Fecha</label>
+        <div class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup ng-model="$ctrl.dt" is-open="$ctrl.opened" datepicker-options="$ctrl.dateOptions"
+            ng-required="true" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="$ctrl.opened = true"><i class="fa fa-calendar"></i></button>
+          </span>
+        </div>
+      </div>
+      <hr>
+
+      <h3>Timepicker</h3>
+      <div uib-timepicker ng-model="$ctrl.mytime"></div>
+      <hr>
+
+      <h3>Loading bar</h3>
+      <div>
+        <p><strong class="text-danger">Nota.-</strong> Por defecto para cada petición se muestra el loading bar automáticamente, pero si se quiere un control manual usar estas opciones:</p>
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.loadingInit()">Iniciar loading</button>
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.loadingInitText()">Iniciar loading con texto</button>
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.loadingInitLocked()">Iniciar loading con texto en pantalla completa</button>
+        <button class="btn btn-danger" type="button" ng-click="$ctrl.loadingEnd()">Terminar loading</button>
+      </div>
+      <hr>
+
+      <h3>Ayudas</h3>
+      <div>
+        <p>Debe pasar el puntero del mouse sobre el ícono <ui-help message="$ctrl.helpLang.ejemplo"></ui-help></p>
+        <p>Texto de ayuda (top) <ui-help message="$ctrl.helpLang.ejemplo" direction="top"></ui-help></p>
+        <p>Texto de ayuda (right) <ui-help message="$ctrl.helpLang.ejemplo" direction="right"></ui-help></p>
+        <p>Texto de ayuda (bottom) <ui-help message="$ctrl.helpLang.ejemplo" direction="bottom"></ui-help></p>
+        <p>Texto de ayuda (left) <ui-help message="$ctrl.helpLang.ejemplo" direction="left"></ui-help></p>
+      </div>
+      <hr>
+
+      <h3>File upload</h3>
+      <div class="row">
+        <div class="col">
+          <label> File upload</label>
+          <ui-file-upload url="$ctrl.upload.url"
+                          name="file"></ui-file-upload>
+        </div>
+        <div class="col">
+          <label> File upload (multiple)</label>
+          <ui-file-upload url="$ctrl.upload.url"
+                          label="Subir al servidor"
+                          textUpload="Subir archivos, arrastre acá"
+                          multiple="true"
+                          types="|png|jpg|pdf|xls|csv|"
+                          name="file"></ui-file-upload>
+        </div>
+      </div>
+      <hr>
+
+      <h3>Componentes Material</h3>
+      <form name="FormEjemplo" novalidate>
+        <c-input name="input_nombre" label="Input" ng-model="$ctrl.inputNombre" ng-required="true"></c-input>
+        <c-input name="input_correo" label="Input Correo" ng-model="$ctrl.inputCorreo" ng-required="true" ng-disabled="false" ng-validation="correo"></c-input>
+        <c-input-money name="input_money" label="Input Money" ng-model="$ctrl.inputMoney" ng-required="true" ng-disabled="false"></c-input-money>
+        <c-textarea name="textarea" label="Textarea" ng-model="$ctrl.textarea" ng-required="true" ng-disabled="false"></c-textarea>
+        <c-select name="select" label="Select" placeholder="Seleccione Item" ng-model="$ctrl.select" ng-required="true" ng-disabled="false" options="$ctrl.items" field="text"></c-select>
+        <c-date name="date" label="Date" ng-model="$ctrl.date" ng-required="true" ng-disabled="false"></c-date>
+        <c-checkbox name="checkbox" label="Checkbox" ng-model="$ctrl.checkbox"></c-checkbox>
+        <c-radiobutton name="radiobutton" label="RadioButton" ng-model="$ctrl.radiobutton" options="$ctrl.items" field="text"></c-radiobutton>
+        <c-input-chips name="inpuchips" label="Input Chips" placeholder="Adicionar Items" ng-model="$ctrl.inputchips" ng-required="true" max-tags="3"></c-input-chips>
+      </form>
+    </div>
+  </div>
+</div>

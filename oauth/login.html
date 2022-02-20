@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Oauth - Agetic</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+  <script>
+    (function () {
+      var params = window.location.search.replace('?', '');
+      params = params.split('&');
+      var code = params[0].split('=')[1];
+      var state = params[1].split('=')[1];
+      var session_state = params[2].split('=')[1];
+
+      console.log('code', code);
+      console.log('state', state);
+      console.log('session_state', session_state);
+      
+      axios.post('http://localhost:3100/autenticar', {
+        username: 'admin',
+        password: 'Developer'
+      }).then(response => {
+        var data = response.data;
+        console.log('response', data);
+        window.localStorage.setItem('app_menu', JSON.stringify(data.menu));
+        window.localStorage.setItem('app_token', data.token);
+        window.localStorage.setItem('app_user', JSON.stringify(data.user));
+        window.localStorage.setItem('app_visible', JSON.stringify(true));
+        window.localStorage.setItem('app_sidenav', JSON.stringify(true));
+        window.location = '/app/#!/';
+      });
+    })();
+  </script>
+</head>
+<body></body>
+</html>

@@ -1,0 +1,35 @@
+<form ng-submit="$ctrl.guardar(form)" name="form">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-credit-card mr-2"></i>{{$ctrl.tituloPagina}}</h5>
+  </div>
+  <div class="modal-body">
+    <div class="card-block">
+      <div class="card">
+        <div class="card-header">
+          <div class="alert alert-info">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <i class="fa fa-user"></i> Debe ingresar el número de documento de identidad y la fecha de emisión del carnet de discapacidad de la persona que desea recuperar.
+          </div><br>
+          <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-8">
+              <div class="form-group">
+                <b-input name="documento_identidad" label="Número documento identidad:"
+                  ng-required="true" ng-model="$ctrl.documento_identidad" ng-validation="numerico" ng-minlength="4" ng-maxlength="10"></b-input>
+                <b-date name="fecha" label="Fecha de emisión de carnet de discapacidad" 
+                  ng-model="$ctrl.fecha_emision" ng-required="true"></b-date>
+              </div>
+            </div>
+          </div><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cerrar</button>
+    <button type="submit" md-effect class="btn btn-primary" ng-disabled="form.$invalid">
+      <i class="fa fa-check"></i>Obtener
+    </button>
+  </div>
+</form>

@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h5 class="modal-title"><i class="fa fa-user"></i> Modal title</h5>
+    <button type="button" class="close" data-dismiss="modal" ng-click="$ctrl.cancel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <ul>
+        <li ng-repeat="item in $ctrl.items">
+            <a href="#" ng-click="$event.preventDefault(); $ctrl.selected.item = item">{{ item.text }}</a>
+        </li>
+    </ul>
+    Selected: <strong>{{ $ctrl.selected.item.text }}</strong>
+</div>
+<div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+        <i class="fa fa-close"></i> Cerrar
+    </button>
+    <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.ok()">
+        <i class="fa fa-check"></i> Guardar
+    </button>
+</div>

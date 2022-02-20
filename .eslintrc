@@ -1,0 +1,21 @@
+{
+  "extends": "eslint:recommended",
+  "plugins": ["angular"],
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "angular": true,
+    "module": true,
+    "inject": true,
+    "document": true,
+    "window": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

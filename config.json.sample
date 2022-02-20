@@ -1,0 +1,10 @@
+{
+  "server": "http://localhost:4000",
+  "serverAuth": "http://localhost:3100",
+  "timeSessionExpired": 30,
+  "debug": true,
+  "onbeforeunload": false,
+  "port": 3100,
+  "subDomain": "/app/",
+  "portDev": 8888
+}

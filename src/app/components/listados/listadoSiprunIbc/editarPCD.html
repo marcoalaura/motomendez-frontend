@@ -1,0 +1,74 @@
+<form name="validador">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-edit"></i> {{$ctrl.tituloPagina}}
+    </h5>
+  </div>
+  <div class="modal-body">
+    <div class="card-block">
+      <div id="datoPersonales">
+        <div class="alert alert-info">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <i class="fa fa-user"></i>
+          <strong>Datos personales</strong>
+        </div>
+        <div class=" card ">
+          <div class="card-header">
+            <div>
+              <div class="row">                
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <div class="label-input mt-2">DOCUMENTO IDENTIDAD</div>
+                  <h5 class="font-weight-bold ml-2 mt-2">{{$ctrl.pcd.documento_identidad}}</h5>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4" ng-if="$ctrl.secundario">
+                  <b-input label="Complemento" name="complemento_documento" ng-model="$ctrl.pcd.complemento_documento"></b-input>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4" ng-if="$ctrl.secundario">
+                  <b-input label="Fecha nacimiento" name="fecha_nacimiento" ng-model="$ctrl.pcd.fecha_nacimiento" ng-required="true"></b-input>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4" ng-if="$ctrl.secundario">
+                  <b-input label="Primer Apellido" name="primer_apellido" ng-model="$ctrl.pcd.primer_apellido"></b-input>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4" ng-if="$ctrl.secundario">
+                  <b-input label="Segundo Apellido" name="segundo_apellido" ng-model="$ctrl.pcd.segundo_apellido"></b-input>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4" ng-if="$ctrl.secundario">
+                  <b-input label="Nombres" name="nombres" ng-model="$ctrl.pcd.nombres" ng-required="true"></b-input>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <b-input label="Apellido casada" name="casada_apellido" ng-model="$ctrl.pcd.casada_apellido"></b-input>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <b-select label="Estado civil" ng-model="$ctrl.pcd.estado_civil" options="$ctrl.estadosCiviles" field="val" placeholder="Seleccione opción"
+                  ng-required="true" ng-if="$ctrl.visible"></b-select>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <b-select label="Formato inf." ng-model="$ctrl.pcd.formato_inf" options="$ctrl.formatosInformacion" field="id" placeholder="Seleccione opción"
+                  ng-required="true" ng-if="$ctrl.visible"></b-select>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <b-select label="exp. departamento" ng-model="$ctrl.pcd.expedido" options="$ctrl.expedicionDepartamentos" field="val" placeholder="Seleccione opción"
+                  ng-required="true" ng-if="$ctrl.visible"></b-select>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                  <b-input label="Telefono/celular" name="telefono" ng-model="$ctrl.pcd.telefono" ng-if="$ctrl.visible"></b-input>
+                </div>
+                <div class="col-md-12">
+                  <b-input label="Dirección" name="direccion" ng-model="$ctrl.pcd.direccion" ng-if="$ctrl.visible" ng-required="true"></b-input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cancelar
+    </button>
+    <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.guardarCambios(validador)">
+      <i class="fa fa-save"></i> Guardar cambios
+    </button>
+  </div>
+</form>

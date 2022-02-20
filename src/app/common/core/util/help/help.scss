@@ -1,0 +1,220 @@
+@import '../../../styles/sass/_variables.scss';
+
+/* ====================================
+                H E L P
+==================================== */
+
+ui-help {
+    display: inline-block;
+}
+.ui-help {
+    cursor: help;    
+
+    .fa {
+        color: lighten($colorSuccess, 6%) !important;
+        font-size: 1.4rem;
+    }
+}
+.ui-help-input {
+    position: relative;
+
+    > input, > select {
+        width: -webkit-calc(100% - 22px);
+        width: -moz-calc(100% - 22px);
+        width: calc(100% - 22px);
+        display: inline-block;
+    }
+}
+
+.ui-help-content {
+    background-color: rgba(0, 0, 0, 0.88);
+    border-radius: 2px;
+    box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 13px 19px 2px rgba(0,0,0,.14), 0 5px 24px 4px rgba(0,0,0,.12);
+    width: 300px;
+    position: fixed;
+    z-index: 1000;
+
+    &.fade {
+        opacity: 0;
+    }
+
+    &.ui-help-center {
+        left: 50%;
+        top: 50%;
+        margin: 0;
+    }
+
+    &:after {
+        content: "";
+        height: 0;
+        position: absolute;
+        width: 0;
+    }
+
+    // TOP
+    &.top {
+        &:after {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 7px solid rgba(0, 0, 0, 0.85);
+            bottom: -6px;
+            left: 50%;
+            margin-left: -10px;
+        }
+    }
+
+    &.top-right {
+        &:after {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 7px solid rgba(0, 0, 0, 0.85);
+            bottom: -7px;
+            left: 10px;
+        }
+    }
+
+    &.top-left {
+        &:after {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 7px solid rgba(0, 0, 0, 0.85);
+            bottom: -7px;
+            right: 10px;
+        }
+    }
+
+    // RIGHT
+    &.right {
+        &:after {
+            border-bottom: 10px solid transparent;
+            border-right: 7px solid rgba(0, 0, 0, 0.85);
+            border-top: 10px solid transparent;
+            left: -6px;
+            top: 50%;
+            margin-top: -10px;
+        }
+    }
+
+    &.right-top {
+        &:after {
+            border-bottom: 10px solid transparent;
+            border-right: 7px solid rgba(0, 0, 0, 0.85);
+            border-top: 10px solid transparent;
+            left: -7px;
+            bottom: 10px;
+        }
+    }
+
+    &.right-bottom {
+        &:after {
+            border-bottom: 10px solid transparent;
+            border-right: 7px solid rgba(0, 0, 0, 0.85);
+            border-top: 10px solid transparent;
+            left: -7px;
+            top: 10px;
+        }
+    }    
+
+    // BOTTOM
+    &.bottom {
+        &:after {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 7px solid rgba(0, 0, 0, 0.85);
+            top: -6px;
+            left: 50%;
+            margin-left: -10px;
+        }
+    }
+
+    &.bottom-right {
+        &:after {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 7px solid rgba(0, 0, 0, 0.85);
+            top: -7px;
+            left: 10px;            
+        }
+    }
+
+    &.bottom-left {
+        &:after {
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 7px solid rgba(0, 0, 0, 0.85);
+            top: -7px;
+            right: 10px;            
+        }
+    }
+    
+    // LEFT
+    &.left {
+        &:after {
+            border-bottom: 10px solid transparent;
+            border-left: 7px solid rgba(0, 0, 0, 0.85);
+            border-top: 10px solid transparent;
+            right: -7px;
+            top: 50%;
+            margin-top: -10px;
+        }
+    }
+
+    &.left-top {
+        &:after {
+            border-bottom: 10px solid transparent;
+            border-left: 7px solid rgba(0, 0, 0, 0.85);
+            border-top: 10px solid transparent;
+            right: -7px;
+            bottom: 10px;
+        }
+    }
+
+    &.left-bottom {
+        &:after {
+            border-bottom: 10px solid transparent;
+            border-left: 7px solid rgba(0, 0, 0, 0.85);
+            border-top: 10px solid transparent;
+            right: -7px;
+            top: 10px;
+        }
+    }    
+
+    .ui-help-header {
+        color: white;
+        font-size: 1.1rem;
+        padding: 11px 13px 0;
+        // text-align: justify;
+        line-height: 0.8rem;
+
+        .fa {
+            color: lighten($colorSuccess, 20%);        
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #777;
+            margin: 2px 0 0;
+        }
+    }
+
+    .ui-help-body {
+        text-align: justify !important;
+        color: #ccc;
+        font-size: 0.9rem;
+        line-height: 1.1rem;
+        padding: 7px 15px 15px;
+
+        ul, ol {
+            padding-left: 20px;
+            margin: 0 0 10px;
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+
+        strong {
+            color: lighten($colorWarning, 10%);
+        }
+    }
+}

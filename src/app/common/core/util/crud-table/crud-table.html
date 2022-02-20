@@ -1,0 +1,89 @@
+<div class="crud-table">
+    <div class="d-flex justify-content-between" ng-if="!$ctrl.inline">
+        <div class="btn-container p-2">
+            <button class="btn btn-primary" md-effect ng-click="$ctrl.add()" type="button" uib-tooltip="Agregar nuevo registro" ng-if="$ctrl.permissions.create">
+                <i class="fa fa-plus"></i> {{ $ctrl.labels.create || 'Agregar' }}
+            </button>
+            <button class="btn btn-default" md-effect type="button" ng-click="$ctrl.refresh()" uib-tooltip="Actualizar tabla">
+                <i class="fa fa-refresh"></i>
+            </button>
+        </div>
+        <form name="$ctrl.searchForm" class="form-search p-2" novalidate ng-submit="$ctrl.search()" ng-if="$ctrl.permissions.filter">
+            <div class="input-group">
+                <span class="input-group-btn" ng-if="$ctrl.searchTerm.length">
+                    <button class="btn btn-default" type="button" ng-click="$ctrl.cleanSearch()" uib-tooltip="Limpiar búsqueda">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </span>
+                <input type="text" class="form-control" placeholder="Escriba su búsqueda aquí" name="searchTerm" ng-model="$ctrl.searchTerm" required />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit" ng-disabled="$ctrl.searchForm.$invalid" uib-tooltip="Buscar en la tabla">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <!-- <div ng-if="$ctrl.inlineOptions" class="alert alert-info">
+        <div ng-if="!$ctrl.editItem">
+            <strong>Opciones: </strong> 
+            <button md-effect class="btn btn-default btn-sm" type="button" ng-click="$ctrl.edit()" ng-if="$ctrl.permissions.update" uib-tooltip="Editar la fila seleccionada">
+                <i class="fa fa-edit"></i> Editar
+            </button>
+            <button md-effect class="btn btn-danger btn-sm" type="button" ng-click="$ctrl.delete()" ng-if="$ctrl.permissions.delete" uib-tooltip="Eliminar la fila seleccionada">
+                <i class="fa fa-trash"></i> Eliminar
+            </button>
+        </div>
+        <div ng-if="$ctrl.editItem">
+            <button md-effect class="btn btn-default btn-sm" type="button" ng-click="$ctrl.editCancel()" ng-if="$ctrl.permissions.update" uib-tooltip="Editar la fila seleccionada">
+                <i class="fa fa-edit"></i> Cancelar edición
+            </button>            
+        </div>
+    </div> -->
+    <form ng-if="$ctrl.inline" name="$ctrl.formInline" ng-submit="$ctrl.saveFormInline()" novalidate class="crud-table-form-inline" ng-class="{'alert-info' : $ctrl.editItem }">
+        <formly-form model="$ctrl.modelInline" fields="$ctrl.fieldsData" options="$ctrl.options" form="$ctrl.formInline">            
+            <button md-effect type="submit"  class="btn btn-primary submit-button" uib-tooltip="Agregar a la lista">
+                <i class="fa fa-arrow-circle-down"></i>
+            </button>
+        </formly-form>
+    </form>
+    <div ng-class="{'edit-item-block' : $ctrl.editItem, 'crud-table-table-inline' : $ctrl.formInline }" ng-hide="$ctrl.data.list && $ctrl.data.list.length == 0">
+        <div ng-click="$ctrl.editCancel()" class="edit-item-block-backdrop"></div>
+        <div ng-table-dynamic="$ctrl.tableParams with $ctrl.headers" show-filter="$ctrl.showFilter" class="table-responsive">
+            <table class="table table-striped table-hover ng-table">
+                <tr ng-repeat="row in $data" ng-class="{ 'edit-item' : row.edit }" ng-click="$ctrl.selectRow(row, $data)">
+                    <td ng-repeat="col in $columns" ng-hide="">
+                        <div ng-switch on="row[col.field]" ng-if="col.dataType !== 'command'">
+                            <div ng-switch-when="boolean_true" class="text-center">
+                                <i class="fa fa-check-circle text-success"></i>
+                            </div>
+                            <div ng-switch-when="boolean_false" class="text-center">
+                                <!-- <i class="fa fa-check-circle text-success"></i> -->
+                            </div>
+                            <div ng-switch-default>
+                                {{ row[col.field] | datetime: 'convert' }}
+                            </div>
+                        </div>
+                        <div ng-if="col.dataType === 'command'" class="btn-actions">
+                            <button md-effect class="btn btn-default btn-sm" type="button" ng-click="$ctrl.edit(row)" ng-if="($ctrl.permissions.update && $ctrl.update === undefined) || $ctrl.update.states[row[$ctrl.update.key]]" uib-tooltip="Editar">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button md-effect class="btn btn-danger btn-sm" type="button" ng-click="$ctrl.delete(row)" ng-if="($ctrl.permissions.delete && $ctrl.delete === undefined) || $ctrl.delete.states[row[$ctrl.delete.key]]" uib-tooltip="Eliminar">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <button md-effect class="btn btn-default" ng-click="$ctrl.print($event, row)" ng-if="$ctrl.permissions.print" uib-tooltip="Imprimir">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <button md-effect class="btn btn-default" ng-repeat="button in $ctrl.buttons" uib-tooltip="{{button.tooltip}}" ng-click="$ctrl.buttonEvent(item, button.onclick)">
+                                <i class="fa fa-{{button.icon}}"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div ng-if="$ctrl.emptyTable" class="alert alert-warning">
+            <i class="fa fa-warning"></i> No existen registros
+        </div>
+    </div>
+</div>

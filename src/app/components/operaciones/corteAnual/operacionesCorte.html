@@ -1,0 +1,48 @@
+<div class="px-4">
+  <div class="page-title">
+    <i class="fa fa-list-alt" aria-hidden="true"></i>
+    <strong>Operaciones de corte anual para la gestión {{ $ctrl.gestion }}</strong>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <button
+        md-effect type="button" class="btn btn-default"
+        ng-click="$ctrl.volverControlCorte()">
+        <i class="fa fa-arrow-left"></i> Volver
+      </button>
+      <button class="btn btn-default float-right" md-effect type="button" ng-click="$ctrl.obtenerDetalleControlCorte()" uib-tooltip="Actualizar tabla">
+        <i class="fa fa-refresh"></i>
+      </button>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover" ng-table="$ctrl.tableParams" style="text-align:center;">
+          <thead>
+            <tr>
+              <th>PROCESO</th>
+              <th>DESCRIPCIÓN</th>
+              <th>ESTADO</th>
+              <th>ACCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="operacion in $ctrl.operaciones">
+              <td>PROCESO {{ operacion.orden }}</td>
+              <td style='text-align: left'>{{ operacion.descripcion }}</td>
+              <td>
+                <span class="badge badge-secondary" ng-if="operacion.estado==='PENDIENTE'">{{ operacion.estado }}</span>
+                <span class="badge badge-info" ng-if="operacion.estado==='HABILITADO' || operacion.estado==='CONCLUIDO'">{{ operacion.estado }}</span>
+                <span class="badge badge-warning" ng-if="operacion.estado==='EJECUCION'">{{ operacion.estado }}</span>
+                <span class="badge badge-success" ng-if="operacion.estado==='FINALIZADO'">{{ operacion.estado }}</span>
+              </td>
+              <td>
+                <button md-effect type="button" class="btn btn-primary" ng-if="operacion.estado==='HABILITADO' || operacion.estado==='CONCLUIDO'"
+                  ng-click="$ctrl.actualizarProceso(operacion.orden, operacion.descripcion)" ng-disabled="$ctrl.disable">
+                  <i class="fa fa-gear"></i> Ejecutar
+                </button>  
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

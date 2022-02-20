@@ -1,0 +1,82 @@
+<div class="ui-file-upload-informe">
+    <input type="file" nv-file-select="" ng-if="$ctrl.multiple === undefined" uploader="uploader" id="{{ $ctrl.idFile }}" class="ng-hide" accept="{{$ctrl.mimeTypes}}"/>
+    <input type="file" nv-file-select="" ng-if="$ctrl.multiple" uploader="uploader" id="{{ $ctrl.idFile }}" multiple class="ng-hide" accept="{{$ctrl.mimeTypes}}"/>
+    <ul>
+        <li ng-repeat="item in uploader.queue" class="ui-file-container">
+            <div ng-show="uploader.isHTML5">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- <div class="col-md-4">
+                    <div class="ui-file-img"> -->
+                        <!-- Image preview -->
+                        <!--auto height-->
+                        <!--<div ng-thumb="{ file: item.file, width: 100 }"></div>-->
+                        <!--auto width-->
+                        <!-- <div ng-thumb="{ file:item._file, width:250, height:100 }"></div> -->
+                        <!--fixed width and height -->
+                        <!--<div ng-thumb="{ file: item.file, width: 100, height: 100 }"></div>-->
+                    <!-- </div>
+                </div> -->
+                <div class="col-md-12 text-center">
+                    <p><strong>Nombre del archivo:</strong> {{ item.file.name }}</p>
+                    <p><strong>Tamaño:</strong> {{ item.file.size/1024/1024|number:2 }} Mb</p>
+                    <div class="ui-file-buttons">
+                        <button type="button" class="btn btn-primary btn-sm" md-effect ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess" ng-hide="item.isUploading" ng-if="false">
+                            <i class="fa fa-upload"></i> {{ $ctrl.label || 'Subir' }}
+                        </button>
+                        <button type="button" class="btn btn-outline-default btn-sm" md-effect ng-click="item.cancel()" ng-disabled="!item.isUploading" ng-hide="!item.isUploading">
+                            <i class="fa fa-ban"></i> Cancelar
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" md-effect ng-click="$ctrl.remove(item)" uib-tooltip="Eliminar archivo">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <hr>
+    <!-- 3. nv-file-over uploader="link" over-class="className" -->
+    <div ng-show="uploader.isHTML5">
+        <!-- Example: ng-file-drop | ng-file-drop="options" -->
+        <label for="{{ $ctrl.idFile }}" nv-file-drop="" nv-file-over="" uploader="uploader" over-class="other-over-zone" class="other-drop-zone zone noselect" uuib-tooltip="Seleccione archivo">
+            <span ng-if="!$ctrl.textUpload">Seleccione {{ $ctrl.multiple ? 'los' : 'un'}} archivo{{ $ctrl.multiple ? 's' : ''}} o arrástrelo{{ $ctrl.multiple ? 's' : ''}} aquí
+              <span ng-if="$ctrl.$$maxsize"><br>Debe pesar hasta <strong>{{$ctrl.maxsize}}</strong></span></span>
+              <span ng-if="$ctrl.$$maxsize"><br>Los formatos permitidos son <strong>{{$ctrl.types}}</strong></span></span>
+            <span ng-if="$ctrl.textUpload" ng-bind-html="$ctrl.textUpload"></span>
+        </label>
+    </div>
+    <hr>
+    <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+    <!-- <label for="{{ $ctrl.idFile }}" md-effect class="btn btn-outline-default">
+        <i class="fa fa-paperclip"></i> Seleccionar archivo{{ $ctrl.multiple ? 's' : ''}}
+    </label> -->
+
+    <div ng-if="$ctrl.multiple">
+        <div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 text-center">
+                <button type="button" class="btn btn-primary btn-md btn-width" md-effect ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" ng-if="false">
+                    <i class="fa fa-upload"></i> Subir todo
+                </button>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center">
+                <button type="button" class="btn btn-outline-default btn-md btn-width" md-effect ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading" ng-if="false">
+                    <i class="fa fa-ban"></i> Cancelar todo
+                </button>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center">
+                <button type="button" class="btn btn-danger btn-md btn-width" md-effect ng-click="$ctrl.clearQueue(uploader)" ng-disabled="!uploader.queue.length">
+                    <i class="fa fa-trash"></i> Eliminar todo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

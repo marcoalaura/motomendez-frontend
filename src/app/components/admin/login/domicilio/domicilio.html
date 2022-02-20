@@ -1,0 +1,134 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 card-element_2 my-2">
+      <div class="card" ng-class="{'form-mediano': $ctrl.tamanio==1, 'form-grande': $ctrl.tamanio==2}">
+        <form ng-submit="$ctrl.ok(formulario)" name="formulario">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              <i class="fa fa-user mr-2"></i>{{$ctrl.tituloPagina}}</h5>
+          </div>
+          <div class="modal-body">
+            <div class="card-block">
+              <div id="datospersonales">
+                <div class="alert alert-info">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <i class="fa fa-user"></i> Datos Personales del PCD
+                </div>
+                <div class=" card ">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <label><b>Nombre y Apellidos: </b></label>
+                        <label class="md-control-label">{{ $ctrl.datosPcd.nombre_completo }}</label>
+                      </div>
+                      <div class="col-sm-4">
+                        <label><b>Documento de Identidad: </b></label>
+                        <label class="md-control-label">{{ $ctrl.datosPcd.numero_documento }}</label>
+                      </div>
+                      <div class="col-sm-8">
+                          <label><b>Municipio Registrado: </b></label>
+                          <label class="md-control-label">{{ $ctrl.datosPcd.departamento }} - {{ $ctrl.datosPcd.provincia }} - {{ $ctrl.datosPcd.municipio }}</label>
+                        </div>
+                      <div class="col-sm-4">
+                        <label><b>Fecha de nacimiento: </b></label>
+                        <label class="md-control-label">{{ $ctrl.datosPcd.fecha_nac }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <br>
+              <p>Si Ud. desea cambiar de domicilio a otro municipio se modificará el municipio donde debe cobrar el Bono a partir de la gestión 2019.</p>
+              <div id="datosdomicilio">
+                <div class="alert alert-info">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <i class="fa fa-home"></i> Indique los nuevos datos de su municipio
+                </div>
+                <div class=" card ">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <b-select label="Departamento" name="departamento" options="$ctrl.departamentos" ng-model="$ctrl.departamento" field="departamento" 
+                        placeholder="Seleccione departamento" ng-required="true"></b-select>
+                      </div>
+                      <div class="col-sm-4">
+                        <b-select label="Provincia" name="provincia" options="$ctrl.provincias" ng-model="$ctrl.provincia" field="provincia" 
+                        placeholder="Seleccione provincia" ng-required="true"></b-select>
+                      </div>
+                      <div class="col-sm-4">
+                          <b-select label="Municipio" name="municipio" options="$ctrl.municipios" ng-model="$ctrl.municipio" field="municipio" 
+                          placeholder="Seleccione municipio" ng-required="true"></b-select>
+                        </div>
+                      <div class="col-sm-12">
+                        <b-input name="direccion" placeholder="Zona / Calle o Avenida / Número" label="Dirección" ng-model="$ctrl.direccion"></b-input>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div id="datosadjuntos">
+                <div class="alert alert-info">
+                  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                  <i class="fa fa-upload"></i> Envíe los siguientes documentos escaneados
+                </div>
+                <b>Nota:</b> El documento debe ser enviado en formato PDF, JPG o PNG, con un tamaño máximo de 5MB.
+                <div class=" card ">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-sm-2 col-md-6">
+                        <div class="form-group">
+                          <br>
+                          <span><b>Fotocopia de carnet de discapacidad con la firma o huella dactilar del beneficiario al medio de la hoja</b></span>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-6 col-md-6">
+                        <br>
+                        <label class="btn btn-primary">
+                          Adjuntar Archivo
+                          <input type="file" ng-file-model="$ctrl.fileBase64" style="display: none;" >
+                        </label>
+                        <br>
+                        <p ng-hide="!$ctrl.fileBase64.name">
+                          <strong class="text-danger">Archivo: </strong>{{$ctrl.fileBase64.name}} <strong class="text-danger">Tamaño: </strong>{{ ($ctrl.fileBase64.size / 1000000) | number:1 }} MB</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div class=" card ">
+                  <div class="row">
+                    <div class="col-sm-12 alert-warning">En caso de: <br> 
+                      <b>a)</b> PCD menor a 18 años, debe registrar de manera <b>OBLIGATORIA</b> los datos de la madre o padre o tutor(a) legal. <br>
+                      <b>b)</b> PCD intelectual, mental/psíquica puede registrar los datos de la madre o padre o tutor(a) legal o acompañante, según corresponda <b>(no obligatorio)</b>. <br>
+                      <b>c)</b> PCD institucionalizados debe registrar los datos de la apoderada o apoderado legal de la institución acreditada.</div>
+                    <div class="col-sm-8">
+                      <b-input name="solicitante" placeholder="Nombre completo de la persona o Apoderado" label="Persona o Apoderado que solicita el cambio de municipio de la persona con discapacidad" ng-model="$ctrl.solicitante"></b-input>
+                    </div>
+                    <div class="col-sm-4">
+                        <b-input name="ci_solicitante" placeholder="CI de la persona o apoderado" label="CI de la persona o apoderado" ng-model="$ctrl.ci_solicitante"></b-input>
+                      </div>
+                    <div class="card-header">
+                      <hr>
+                      <center> <b><u>DECLARACIÓN JURADA</u></b></center>
+                      Por medio del presente formulario, yo <b>{{ $ctrl.solicitante ? $ctrl.solicitante : $ctrl.datosPcd.nombre_completo }}</b> con cédula de identidad <b>{{ $ctrl.solicitante ? $ctrl.ci_solicitante : $ctrl.datosPcd.numero_documento }}</b> declaro la veracidad de la información registrada con el fin de que se realicen las actualizaciones necesarias.
+                      <br><br>
+                      <center> <input type="checkbox" ng-model="$ctrl.acepto"> Acepto y apruebo<center>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+              <i class="fa fa-close"></i> Cerrar</button>
+            <button type="submit" md-effect class="btn btn-primary" ng-disabled="!$ctrl.acepto">
+              <i class="fa fa-check"></i>{{'Guardar'}}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

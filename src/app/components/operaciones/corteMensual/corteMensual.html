@@ -1,0 +1,44 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <strong>Operaciones corte mensual</strong>
+  </h2>
+  <div class="card">
+    <div class="card-body">
+      <div class="table-responsive">
+        <pre class="alert alert-info">Habilitar operaciones para cada gestión.</pre>
+        <table class="table table-bordered table-striped table-hover" style="text-align:center;">
+          <span ng-if="$ctrl.habilitadaCreacion">
+            <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.habilitarCorteMensualConfirmacion()">
+              <i class="fa fa-check"></i> HABILITAR CORTE MENSUAL PARA GESTIÓN ACTUAL
+            </button>
+          </span>
+          <hr>
+          <thead>
+            <tr>
+              <td>ACCIONES</td>
+              <td>GESTIÓN</td>
+              <td>MES</td>
+              <td>ESTADO</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="reg in $ctrl.controlCorte.slice().reverse()">
+              <td>
+                <button
+                  md-effect type="button" class="btn btn-primary" ng-if="reg.estado === 'PENDIENTE' && reg.mes == $ctrl.mesActual"
+                  ng-click="$ctrl.abrirPaginaOperaciones()">
+                  {{ 'VER DETALLES' }}
+                </button>
+              </td>
+              <td>{{ reg.gestion }}</td>
+              <td>{{ $ctrl.months[reg.mes - 1] | lowercase}}</td>
+              <td>
+                <span class="badge badge-warning" ng-if="reg.estado === 'PENDIENTE'">{{ reg.estado }}</span>
+                <span class="badge badge-success" ng-if="reg.estado !== 'PENDIENTE'">{{ reg.estado }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

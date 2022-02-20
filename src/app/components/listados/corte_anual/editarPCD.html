@@ -1,0 +1,73 @@
+<form name="validador">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-edit"></i> {{$ctrl.tituloPagina}}
+    </h5>
+  </div>
+  <div class="modal-body">
+    <div class="card-block">
+      <div id="datoPersonales">
+        <div class="alert alert-info">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <i class="fa fa-user"></i>
+          <strong>Datos Personales</strong>
+        </div>
+        <div class=" card ">
+          <div class="card-header">
+            <div>
+              <div class="row">
+                <div class="col-md-4">
+                  <b-input label="Nro. documento" name="nro_documento" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.nro_documento" ng-required="true"></b-input>
+                </div>
+                <div class="col-md-4">
+                  <b-input label="Fecha nacimiento" name="fecha_nacimiento" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.fecha_nacimiento" ng-required="true"></b-input>
+                </div>
+                <div class="col-md-4">
+                  <b-input label="Complemento" name="complemento" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.complemento"></b-input>
+                </div>
+                <div class="col-md-12" ng-if="$ctrl.pcd.esEdicion">
+                  <b-input label="Nombre Completo" name="nombre_completo" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.nombre_completo"></b-input>
+                </div>
+                <div class="col-md-4" ng-if="!$ctrl.pcd.esEdicion">
+                  <b-input label="Primer Apellido" name="primer_apellido" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.primer_apellido"></b-input>
+                </div>
+                <div class="col-md-4" ng-if="!$ctrl.pcd.esEdicion">
+                  <b-input label="Segundo Apellido" name="segundo_apellido" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.segundo_apellido"></b-input>
+                </div>
+                <div class="col-md-4" ng-if="!$ctrl.pcd.esEdicion">
+                  <b-input label="Nombres" name="nombres" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.nombres" ng-required="true"></b-input>
+                </div>
+                <div class="col-md-4">
+                  <b-input label="Apellido casada" name="apellido_casada" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.apellido_casada"></b-input>
+                </div>
+                <div class="col-md-4">
+                  <b-select label="Estado civil" ng-model="$ctrl.pcd.estado_civil" options="$ctrl.estadosCiviles" field="val" placeholder="Seleccione opción" ng-required="$ctrl.requerido"></b-select>
+                </div>
+                <div class="col-md-4">
+                  <b-select label="Formato inf." ng-model="$ctrl.pcd.formato_inf" options="$ctrl.formatosInformacion" field="id" placeholder="Seleccione opción" ng-required="$ctrl.requerido"></b-select>
+                </div>
+                <div class="col-md-4">
+                  <b-input label="Exp. país" name="exp_pais" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.exp_pais" ng-required="$ctrl.requerido"></b-input>
+                </div>
+                <div class="col-md-4">
+                  <b-select label="exp. departamento" ng-model="$ctrl.pcd.exp_departamento" options="$ctrl.expedicionDepartamentos" field="val" placeholder="Seleccione opción" ng-required="$ctrl.requerido"></b-select>
+                </div>
+                <div class="col-md-4">
+                  <b-input label="Celular" name="celular" ng-disabled="$ctrl.pcd.esEdicion" ng-model="$ctrl.pcd.celular"></b-input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cancelar
+    </button>
+    <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.guardarCambios(validador)">
+      <i class="fa fa-save"></i> Guardar cambios
+    </button>
+  </div>
+</form>

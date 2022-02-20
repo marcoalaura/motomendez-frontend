@@ -1,0 +1,22 @@
+<ng-form name="select_date_form">
+<div class="select-date form-group">
+  <label ng-class="{'ap-req':$ctrl.ngRequired}">{{$ctrl.label}}</label>
+  <div class="row mx-0">
+    <input name="fecha" numeric  maxlength="2" minlength="1" class="col-md-2 form-control day" ng-model="$ctrl.day" ng-change="$ctrl.changeDate('day')" ng-required="$ctrl.ngRequired" ng-disabled="$ctrl.ngDisabled" placeholder="Día">
+
+    <input name="fecha" numeric  maxlength="2" minlength="1" class="col-md-2 form-control month" ng-model="$ctrl.month" ng-change="$ctrl.changeDate('month')" ng-required="$ctrl.ngRequired" ng-disabled="$ctrl.ngDisabled" placeholder="Mes">
+    
+   <!-- <select name="fecha" class="col-md-5 form-control month" ng-model="$ctrl.month" ng-change="$ctrl.changeDate('month')" size ng-required="$ctrl.ngRequired"  ng-disabled="$ctrl.ngDisabled">
+      <option selected value="" ng-if="!$ctrl.month">Mes</option>
+      <option ng-repeat="item in $ctrl.months" ng-value="{{item.val}}">{{item.name}}</option>
+    </select>-->
+    <input name="fecha" numeric maxlength="4" minlength="4" class="col-md-2 form-control year" ng-model="$ctrl.year" ng-change="$ctrl.changeDate('year')" ng-required="$ctrl.ngRequired" ng-disabled="$ctrl.ngDisabled"  placeholder="Año" >
+  </div>
+  <div ap-error ng-messages="select_date_form.fecha.$error" role="alert" ng-if="select_date_form.fecha.$touched">
+    <div ng-message="required">La fecha es requerida</div>
+    <div ng-message="minlength">La fecha es requerida</div>
+    <div ng-message="maxlength">La fecha es requerida</div>
+  </div>
+  <!-- <pre>{{select_date_form.fecha |json}}</pre> -->
+</div>
+</ng-form>

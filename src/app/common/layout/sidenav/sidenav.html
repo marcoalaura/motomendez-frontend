@@ -1,0 +1,33 @@
+<div class="sidenav">
+    <div class="sidenav-app">
+        <div class="sidenav-logo text-primary">
+            <span class="sidenav-logo-sistema"></span>
+        </div>
+        <h1 class="sidenav-title">{{ $ctrl.systemName }}</h1>
+    </div>
+    <div class="sidenav-user" ng-if="$ctrl.getSidenav()">
+        <figure class="sidenav-user-photo rounded-circle bg-{{ $ctrl.getColor() }}">{{ $ctrl.getInitial() }}</figure>
+        <div class="sidenav-user-info">
+            <!--<label class="sidenav-user-name" uib-tooltip="Nombre de Usuario" tooltip-placement="right" tooltip-append-to-body="true">{{ $ctrl.getName() }}</label>-->
+            <label class="sidenav-user-mail" uib-tooltip="Cuenta de Usuario" tooltip-placement="right" tooltip-append-to-body="true"><i class="fa fa-envelope-o"></i> {{ $ctrl.getEmail() }}</label>
+            <label class="sidenav-user-mail" uib-tooltip="Rol de Usuario" tooltip-placement="right" tooltip-append-to-body="true"><i class="fa fa-user"></i> {{ $ctrl.rol }}</label>
+            <label class="sidenav-user-mail" uib-tooltip="Municipio" tooltip-placement="right" tooltip-append-to-body="true" ng-if ="$ctrl.rol=='MUNICIPIO'"><i class="fa fa-home"></i> {{ $ctrl.getMunicipio() }}</label>
+        </div>
+    </div>
+    <div class="sidenav-container" id="sidenav-menu" ng-if="$ctrl.getVisible()">
+        <ul class="sidenav-menu">
+            <li ng-repeat="option in $ctrl.getMenu()">
+                <a md-effect class="sidenav-item" href="" ng-click="$ctrl.send(option.url, option.submenu.length)" toggle-menu data-url="{{option.url || option.label }}">
+                    <span class="sidenav-icon rounded-circle bg-{{option.color}}"><i class="fa fa-{{option.icon}}"></i></span>
+                    <label class="sidenav-item-text">{{ option.label }}</label>
+                    <span class="sidenav-item-arrow" ng-if="option.submenu.length"><i class="fa fa-angle-right"></i></span>
+                </a>
+                <ul class="sidenav-submenu" ng-if="option.submenu.length">
+                    <li ng-repeat="sub in option.submenu">
+                        <a md-effect class="sidenav-submenu-item btn-default" href="" data-url="{{sub.url}}" ng-class="{ 'active' : $ctrl.url == sub.url }" ng-click="$ctrl.send(sub.url)">{{ sub.label }}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div> 

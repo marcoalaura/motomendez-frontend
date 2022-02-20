@@ -1,0 +1,57 @@
+:root {
+    --height-navbar: 60px;
+}
+
+.navbar {
+    background-color: #ffffff;
+    height: var(--height-navbar);
+    padding: .6rem .8rem;
+    box-shadow: 0px 0px 3px rgba(0,0,0,.2);
+
+    &-buttons {
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+        .btn-link,
+        .nav-link {
+            font-size: 18px;
+            color: #7a7f8c;
+            cursor: pointer;
+            padding: 0.6rem 1rem !important;
+
+
+            &:first-child {
+                margin-right: 10px;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &:focus {
+                border-color: transparent;
+            }
+        }
+
+        .input-group {
+            margin: 0 0 0 20px;
+            width: 260px;
+
+            .input-group-addon {
+                background-color: transparent;
+            }
+
+            .form-control {
+                border-left: 0;
+
+                & ~ .input-group-addon {
+                    box-shadow: none;
+                    background: #f8f8f8;
+                    border-color: #999999;
+                    outline: none;
+                }
+            }
+        }
+    }
+}

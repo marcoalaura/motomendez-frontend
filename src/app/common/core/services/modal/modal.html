@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h5 class="modal-title"><i class="fa fa-{{ $ctrl.icon }}" ng-if="$ctrl.icon"></i> {{ $ctrl.title }}</h5>
+    <button type="button" class="close" data-dismiss="modal" ng-if="$ctrl.btnClose" ng-click="$ctrl.close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div ng-bind-html="$ctrl.message" ng-if="$ctrl.message"></div>
+</div>
+<div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.close()" ng-if="$ctrl.cancel">
+        <i class="fa fa-close"></i> {{ $ctrl.labelCancel || 'Cancelar'}}
+    </button>
+    <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.ok()">
+        <i class="fa fa-check"></i> {{ $ctrl.labelOk || 'Aceptar' }}
+    </button>
+</div>

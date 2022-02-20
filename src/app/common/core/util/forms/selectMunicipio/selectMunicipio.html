@@ -1,0 +1,24 @@
+<ng-form name="dep_pro_mun_form">
+  <div class="row">
+    <div class="form-group col-md-4">
+      <uib-select  name="departamento" label="Departamento:" ng-model="$ctrl.id_dpa" items="$ctrl.departamentos" key-value="id_dpa" key-text="departamento" placeholder="Seleccione..." ng-required="$ctrl.conf.fid_departamento.requerido"></uib-select>
+      <div ap-error ng-messages="dep_pro_mun_form.departamento.$error" role="alert" ng-if="dep_pro_mun_form.departamento.$touched">
+        <div ng-message="required">El campo es requerido</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <uib-select name="provincia" label="Provincia:" ng-model="$ctrl.fid_provincia" items="$ctrl.provincias" key-value="id_dpa" key-text="provincia" placeholder="Seleccione..." ng-required="$ctrl.conf.fid_provincia.requerido" ></uib-select>
+      <div ap-error ng-messages="dep_pro_mun_form.provincia.$error" role="alert" ng-if="dep_pro_mun_form.provincia.$touched">
+        <div ng-message="required">El campo es requerido</div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <uib-select name="municipio" label="Municipio:" ng-Model="$ctrl.cod_municipio" items="$ctrl.municipios" key-value="cod_municipio" key-text="municipio" placeholder="Seleccione..." ng-required="$ctrl.conf.fid_municipio.requerido" ></uib-select>
+      <div ap-error ng-messages="dep_pro_mun_form.municipio.$error" role="alert" ng-if="dep_pro_mun_form.municipio.$touched">
+        <div ng-message="required">El campo es requerido</div>
+      </div>
+    </div>
+  </div>
+</ng-form>

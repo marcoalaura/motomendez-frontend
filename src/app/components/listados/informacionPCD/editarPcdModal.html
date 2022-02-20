@@ -1,0 +1,61 @@
+<form ng-submit="$ctrl.guardar(form)" name="form">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-user mr-2"></i>{{$ctrl.tituloPagina}}</h5>
+  </div>
+  <div class="modal-body">
+    <div class="card-block">
+      <div id="datoPersonales">
+        <div class="card">
+          <div class="card-header">
+            <div class="alert alert-info">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <i class="fa fa-user"></i> La actualización se realizará a partir de los datos obtenidos desde SIPRUNPCD.
+            </div><br>
+            <h5 class="col-md-12">
+                <i class="fa fa-list-alt" aria-hidden="true"></i> Opciones de modificación
+            </h5>
+            <div class="row justify-content-center">
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <b-radiobutton name="opcioness" label="" ng-model="$ctrl.opcion" 
+                    options="$ctrl.opciones" ng-required="false" field="nombre"></b-radiobutton>
+                  <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="form-check-input" ng-model="$ctrl.otros">
+                    <span class="custom-control-indicator"></span>
+                    <span class="form-control-description label-input">Expedido, estado civil, formato inf.</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <h5 class="col-md-12" ng-if="$ctrl.opcion === 'Número documento identidad' || $ctrl.opcion === 'Complemento documento' || $ctrl.opcion === 'Fecha de nacimiento'">
+                <i class="fa fa-credit-card" aria-hidden="true"></i> Información a modificar
+            </h5>
+            <div class="row justify-content-center">
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <b-input ng-if="$ctrl.opcion === 'Número documento identidad'" name="documento_identidad" label="Número documento identidad:"
+                    ng-required="true" ng-model="$ctrl.documento_identidad" ng-validation="numerico" ng-minlength="4" ng-maxlength="10"></b-input>
+                  <b-input ng-if="$ctrl.opcion === 'Complemento documento'" name="complemento" label="Complemento documento identidad:"
+                    ng-required="true" ng-model="$ctrl.complemento" ng-minlength="2" ng-maxlength="2"></b-input>                  
+                  <b-date ng-if="$ctrl.opcion === 'Fecha de nacimiento'" name="fecha" label="Fecha de nacimiento" 
+                    ng-model="$ctrl.fecha_nacimiento" ng-required="true"></b-date>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cerrar</button>
+    <button md-effect type="button" class="btn btn-light" ng-click="$ctrl.limpiar()" ng-disabled="!$ctrl.opcion && !$ctrl.otros">
+      <i class="fa fa-ban"></i> Limpiar</button>
+    <button type="submit" md-effect class="btn btn-primary" ng-disabled="form.$invalid || (!$ctrl.opcion && !$ctrl.otros)">
+      <i class="fa fa-check"></i>Guardar
+    </button>
+  </div>
+</form>

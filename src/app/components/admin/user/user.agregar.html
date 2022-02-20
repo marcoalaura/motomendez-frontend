@@ -1,0 +1,76 @@
+<form name="validador">
+    <div class="modal-header">
+        <h5 class="modal-title">
+            <i class="fa fa-user px-2"></i>{{$ctrl.tituloPagina}}</h5>
+    </div>
+    <div class="modal-body">
+        <div class="card-block">
+            <div id="datoPersonales">
+                <div class="alert alert-info">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <i class="fa fa-user"></i>
+                    <strong>Datos Personales</strong>
+                </div>
+                <div class=" card ">
+                    <div class="card-header">
+                        <div class="alert alert-warning" role="alert" ng-hide="$ctrl.items.esEdicion || $ctrl.data.usuario.id_persona">
+                            <strong>Advertencia: </strong>Para guardar la información del nuevo usuario debe validar los datos.
+                        </div>
+                        <div>
+                            <documento-identidad ng-model="$ctrl.data.usuario" conf="$ctrl.conf.rep" only-ci="true" ng-hide="$ctrl.items.esEdicion" ng-disabled="$ctrl.items.esEdicion"></documento-identidad>
+                            <div class="row">
+                                <div class="col-md-12" ng-if="$ctrl.items.esEdicion">
+                                    <b-input label="Nombre Completo" name="nombre_completo" ng-disabled="$ctrl.items.esEdicion && $ctrl.usuario.estado != 'PENDIENTE'" ng-model="$ctrl.usuario.nombres"></b-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="alert alert-info">
+                <i class="fa fa-forward"></i>
+                <strong>Datos de Cuenta de Usuario</strong>
+            </div>
+            <div class=" card ">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <b-email label="Correo Electrónico" name="correo_electronico" ng-model="$ctrl.usuario.email" ng-required="true"></b-email>
+                        </div>
+                        <div class="col-sm-6">
+                            <b-select label="Rol" name="rol" ng-model="$ctrl.usuario.roles" options="$ctrl.roles" field="nombre" placeholder="Seleccione un Rol" ng-required="true" ></b-select>
+                        </div>
+                        <div class="col-md-12" ng-if="$ctrl.usuario.roles.id_rol == 3">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <b-select name="departamento" label="Departamento" ng-model="$ctrl.id_dpa" options="$ctrl.departamentos" field="departamento" ng-required="true" placeholder="Seleccione Departamento"></b-select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <b-select name="provincia" label="Provincia" ng-model="$ctrl.fid_provincia" options="$ctrl.provincias" field="provincia" ng-required="true" placeholder="Seleccione Provincia"></b-select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <b-select name="municipio" label="Municipio" ng-model="$ctrl.usuario.cod_municipio" options="$ctrl.municipios" field="municipio" ng-required="true" placeholder="Seleccione Municipio"></b-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+            <i class="fa fa-close"></i> Cerrar
+        </button>
+
+        <button md-effect type="button" class="btn btn-primary" ng-if="!$ctrl.items.esEdicion"  ng-click="$ctrl.ok(validador)" ng-disabled=" !$ctrl.data.usuario.id_persona">
+            <i class="fa fa-check"></i>
+            Guardar
+        </button>
+        <button md-effect type="button" class="btn btn-primary" ng-if="$ctrl.items.esEdicion" ng-click="$ctrl.ok(validador)">
+            <i class="fa fa-check"></i>
+            Editar
+        </button>
+    </div>
+</form>

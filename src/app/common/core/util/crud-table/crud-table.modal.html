@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h5 class="modal-title"><i class="fa fa-user"></i> Agregar/Editar {{ $ctrl.title }}</h5>
+    <button type="button" class="close" data-dismiss="modal" ng-click="$ctrl.cancel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <formly-form model="$ctrl.model" fields="$ctrl.fields" options="$ctrl.options" form="$ctrl.form"></formly-form>
+</div>
+<div class="modal-footer">
+    <button md-effect type="button" class="btn btn-secondary" ng-click="$ctrl.cancel()">
+        <i class="fa fa-close"></i> Cerrar
+    </button>
+    <button md-effect type="button" class="btn btn-primary" ng-disabled="$ctrl.form.$invalid" ng-click="$ctrl.save()">
+        <i class="fa fa-check"></i> Guardar
+    </button>
+</div>

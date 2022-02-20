@@ -1,0 +1,147 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-map-marker"></i>
+    <strong>Listado de personas habilitadas para el cobro de bono por mes</strong>
+  </h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="alert alert-primary col-md-12" role="alert">
+        <strong>Para una búsqueda más certera seleccione una gestión:</strong>
+      </div>
+      <form name="form">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-4">
+            <b-select name="gestion" label="Gestión" ng-model="$ctrl.id_gestion" options="$ctrl.gestion" field="id_gestion" ng-required="true"
+              placeholder="Seleccione Gestión"></b-select>
+          </div>
+          <div class="col-md-2">
+            <!-- <button class="btn btn-primary mx-0 float-right mt-4" type="button" ng-click="$ctrl.generar_lista(form)" ng-disabled="form.$invalid"> -->
+            <button class="btn btn-primary mx-0 float-right mt-4" type="button" ng-click="$ctrl.generar_lista2(form)" ng-disabled="form.$invalid">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Buscar
+            </button>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </form>
+    </div>
+    <div class="card-body">
+
+    <div ng-hide="$ctrl.mensual.length == 0 || !$ctrl.mensual">
+      <h4>Habilitadas para cobros del mes actual </h4>    
+      <div class="table-responsive">
+        <!-- <table class="table table-bordered table table-striped" ng-table="$ctrl.tableParams" ng-hide="$data.length == 0 || !$data" -->
+        <table class="table table-bordered table table-striped" ng-table="$ctrl.tableParams"
+          style="text-align:center;">
+          <thead>
+            <tr>
+              <td>
+                <strong> ACCIONES</strong>
+              </td>
+              <td>
+                <strong> DEPARTAMENTO</strong>
+              </td>
+              <td>
+                <strong> PROVINCIA</strong>
+              </td>
+              <td>
+                <strong> MUNICIPIO</strong>
+              </td>
+              <td>
+                <strong> MES</strong>
+              </td>
+              <td>
+                <strong> ESTADO</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr ng-repeat="detalle in $data"> -->
+            <tr ng-repeat="detalle in $ctrl.mensual">
+              <td>
+                <a href="" uib-tooltip="Ver Documento" ng-show="detalle.estado=='GENERADO'" ng-click="$ctrl.mostrar_pdf(detalle)">
+                  <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </td>
+              <td>
+                {{detalle.dpa.departamento}}
+              </td>
+              <td>
+                {{detalle.dpa.provincia}}
+              </td>
+              <td>
+                {{detalle.dpa.municipio}}
+              </td>
+              <td>
+                {{detalle.municipio_mes.mes}}
+              </td>
+              <td>
+                {{detalle.estado}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br><br>
+    <div ng-hide="$ctrl.acumulado.length == 0 || !$ctrl.acumulado">
+      <h4>Habilitadas para cobros de meses anteriores </h4>
+      <div class="table-responsive">
+        <!-- <table class="table table-bordered table table-striped" ng-table="$ctrl.tableParams2" ng-hide="$data.length == 0 || !$data"  -->
+        <table class="table table-bordered table table-striped" ng-table="$ctrl.tableParams2"
+          style="text-align:center;">
+          <thead>
+            <tr>
+              <td>
+                <strong> ACCIONES</strong>
+              </td>
+              <td>
+                <strong> DEPARTAMENTO</strong>
+              </td>
+              <td>
+                <strong> PROVINCIA</strong>
+              </td>
+              <td>
+                <strong> MUNICIPIO</strong>
+              </td>
+              <td>
+                <strong> MES</strong>
+              </td>
+              <td>
+                <strong> ESTADO</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr ng-repeat="detalle in $data"> -->
+            <tr ng-repeat="detalle in $ctrl.acumulado">
+              <td>
+                <!-- <a href="" uib-tooltip="Ver Documento" ng-show="detalle.estado=='GENERADO'" ng-click="$ctrl.mostrar_pdf_regularizado(detalle)"> -->
+                <a href="" uib-tooltip="Ver Documento" ng-show="detalle.estado=='GENERADO'" ng-click="$ctrl.mostrar_pdf_acumulado(detalle)">
+                  <i class="fa fa-file-pdf-o fa-2x" aria-hidden="true"></i>
+                </a>
+              </td>
+              <td>
+                {{detalle.dpa.departamento}}
+              </td>
+              <td>
+                {{detalle.dpa.provincia}}
+              </td>
+              <td>
+                {{detalle.dpa.municipio}}
+              </td>
+              <td>
+                {{detalle.mes}}
+              </td>
+              <td>
+                {{detalle.estado}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

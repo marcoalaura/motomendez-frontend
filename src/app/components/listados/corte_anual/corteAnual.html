@@ -1,0 +1,110 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-list"></i>
+    <strong>Listado corte anual </strong>
+  </h2>
+  <div class="card">
+    <div class="card-body">
+      <!-- <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.filtrar()" ng-if="$ctrl.rol=='MINISTERIO' && $ctrl.estado=='PENDIENTE' ">
+        <i class="fa fa-filter"></i> FILTRO
+      </button> -->
+      <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.descargar()" ng-if="$ctrl.rol=='MINISTERIO' || $ctrl.rol=='ECONOMIA' ">
+        <i class="fa fa-download"></i> DESCARGAR
+      </button>
+      <!-- <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.contrastar()" ng-if="$ctrl.rol=='MINISTERIO'  && $ctrl.estado=='FILTRADO' ">
+        <i class="fa fa-search"></i> CONTRASTAR
+      </button> -->
+      <button class="btn btn-default float-right" md-effect type="button" ng-click="$ctrl.listar()" uib-tooltip="Actualizar tabla">
+        <i class="fa fa-refresh"></i>
+      </button>
+      <form name="form" ng-if="$ctrl.rol!='ECONOMIA'">
+        <div class="row py-3">
+          <div class="col-sm-12 col-md-6 col-lg-2" ng-if="$ctrl.rol=='MINISTERIO'">
+            <b-select name="tipos" label="Tipo" ng-model="$ctrl.tipo" options="$ctrl.tipos" field="tipo" placeholder="Seleccione Tipo"
+              ng-required="false"></b-select>
+          </div>
+          <!-- <div class="col-md-2" ng-if="$ctrl.rol=='SALUD' || $ctrl.rol=='IBC'">
+            <b-select name="estados" label="Estado contrastación" ng-model="$ctrl.estado" options="$ctrl.estados" field="estado" placeholder="Seleccione opción"
+              ng-required="false"></b-select>
+          </div> -->
+          <div class="col-sm-12 col-md-6 col-lg-2">
+              <b-input label="Nro. Documento" name="documento_identidad" ng-model="$ctrl.documento_identidad"></b-input>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-2">
+              <b-input label="Primer Apellido" name="primer_apellido" ng-model="$ctrl.primer_apellido"></b-input>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-2">
+              <b-input label="Segundo Apellido" name="segundo_apellido" ng-model="$ctrl.segundo_apellido"></b-input>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-2">
+              <b-input label="Nombres" name="nombres" ng-model="$ctrl.nombres"></b-input>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-2">
+            <button class="btn btn-primary mx-0 mt-4" type="button" ng-click="$ctrl.listar(form)" ng-disabled="form.$invalid">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Buscar
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="table-responsive py-3" ng-if="$ctrl.rol!='ECONOMIA'">
+        <table class="table table-striped table-bordered table-hover" ng-table="$ctrl.tableParams" style="text-align:center;">
+          <thead>
+            <tr>
+              <!-- <td>
+                <strong>ACCIONES</strong>
+              </td> -->
+              <td>
+                <strong>NRO. DOCUMENTO</strong>
+              </td>
+              <td>
+                <strong>NOMBRES Y APELLIDOS</strong>
+              </td>
+              <td>
+                <strong>FECHA NACIMIENTO</strong>
+              </td>
+              <td>
+                <strong>MUNICIPIO</strong>
+              </td>
+              <td>
+                <strong>TIPO</strong>
+              </td>
+              <td>
+                <strong>ESTADO CORTE ANUAL</strong>
+              </td>
+              <!-- <td>
+                <strong>ESTADO CONTRASTACIÓN</strong>
+              </td> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="pcd in $data">
+              <!-- <td>
+                <a href="" uib-tooltip="Editar" ng-click="$ctrl.verEditar(pcd)"
+                  ng-if="($ctrl.rol=='SALUD' || $ctrl.rol=='IBC') && pcd.estado_contrastacion === 'OBSERVADO'">
+                  <i class="fa fa-edit fa-2x"></i>
+                </a>
+              </td> -->
+              <td>{{pcd.nro_documento}}</td>
+              <td>{{pcd.nombres}} {{pcd.primer_apellido}} {{pcd.segundo_apellido}}</td>
+              <td>{{pcd.fecha_nacimiento}}</td>
+              <td>{{pcd.nombre_municipio}}</td>
+              <td>{{pcd.tipo}}</td>
+              <td>
+                <span class="badge badge-success" ng-if="pcd.estado=='HABILITADO'">{{pcd.estado}}</span>
+                <span class="badge badge-secondary" ng-if="pcd.estado!=='HABILITADO'">NO HABILITADO</span>
+                <div ng-if="pcd.observacion"><small>{{pcd.observacion}}</small></div>
+              </td>
+              <!-- <td>
+                <span class="badge badge-info" ng-if="pcd.estado_contrastacion=='HABILITADO'">SIN OBSERVACIÓN</span>
+                <span class="badge badge-danger" ng-if="pcd.estado_contrastacion=='OBSERVADO'">{{pcd.estado_contrastacion}}</span>
+                <span class="badge badge-info" ng-if="pcd.estado_contrastacion=='PENDIENTE'">{{pcd.estado_contrastacion}}</span>
+                <div ng-if="pcd.observacion_contrastacion"><small>{{pcd.observacion_contrastacion}}</small></div>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

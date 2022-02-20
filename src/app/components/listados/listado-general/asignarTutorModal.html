@@ -1,0 +1,105 @@
+<form ng-submit="$ctrl.ok(formulario)" name="formulario">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-user mr-2"></i>{{$ctrl.tituloPagina}}</h5>
+  </div>
+  <div class="modal-body">
+    <div class="card-block">
+      <div id="datoPersonales">
+        <div class="alert alert-info">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <i class="fa fa-user"></i>Datos Personales del PCD
+        </div>
+        <div class=" card ">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-sm-8">
+                <b-input name="nombre_completo" label="Nombre y Apellidos" ng-model="$ctrl.items.persona.nombres" ng-disabled="true"></b-input>
+              </div>
+              <div class="col-sm-4">
+                <b-input name="ci" label="Documento de Identidad" ng-model="$ctrl.items.persona.documento_identidad" ng-disabled="true"></b-input>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <div class="alert alert-info">
+        <i class="fa fa-user-circle"></i>
+        Datos del Tutor
+      </div>
+      <div class=" card " ng-hide="$ctrl.items.pcd_tutor.length == 0">
+        <div class="card-header">
+          <div class="row">
+            <h5 class="col-md-12">
+              <strong>
+                <i class="fa fa-user-times" aria-hidden="true"></i>Tutor Actual</strong>
+            </h5>
+            <div class="col-sm-8">
+              <b-input label="Nombres y Apellidos" name="nombres_tutor" ng-disabled="true" ng-model="$ctrl.items.pcd_tutor[$ctrl.items.pcd_tutor.length-1].persona.nombre_completo"></b-input>
+            </div>
+            <div class="col-sm-4">
+              <b-input label="Documento de Identidad" name="ci_tutor" ng-disabled="true" ng-model="$ctrl.items.pcd_tutor[$ctrl.items.pcd_tutor.length-1].persona.documento_identidad"></b-input>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div ng-hide="$ctrl.items.pcd_tutor.length == 0">
+        <br>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h5 class="col-md-12">
+            <strong>
+              <i class="fa fa-user-plus" aria-hidden="true"></i>Nuevo Tutor</strong>
+          </h5>
+          <documento-identidad ng-model="$ctrl.data.usuario" conf="$ctrl.conf.rep" only-ci="true"></documento-identidad>
+          <div class="row">
+            <div class="col-sm-4 col-md-4">
+              <div class="form-group">
+                <b-input name="telefono" label="Teléfono/Celular:" ng-required="true" ng-model="$ctrl.usuario.telefono" ng-validation="numerico"
+                  ng-maxlength="10" ng-minlength="6"></b-input>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <b-radiobutton name="genero" label="Genero" ng-model="$ctrl.usuario.genero" options="$ctrl.generos" ng-required="true" field="nombre"></b-radiobutton>
+              </div>
+            </div>
+            <div class="form-group col-md-4">
+              <b-select label="Parentezco del Tutor" name="parentezco" options="$ctrl.parentesco" ng-model="$ctrl.usuario.fid_parametro"
+                placeholder="Seleccione parentezco" ng-required="true"></b-select>
+              <div ap-error ng-messages="formulario.parentezco.$error" role="alert" ng-if="formulario.parentezco.$touched">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4 col-md-6">
+              <div class="form-group">
+                <b-input name="documento_descripcion" label="Descripción del Documento de Respaldo:" ng-required="true" ng-model="$ctrl.usuario.documento_descripcion"
+                  ng-minlength="1"></b-input>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-md-6">
+              <br>
+              <label class="btn btn-primary">
+                Adjuntar Archivo
+                <input type="file" ng-file-model="$ctrl.fileBase64" style="display: none;" ng-required="true">
+              </label>
+              <br>
+              <p ng-hide="!$ctrl.fileBase64.name">
+                <strong class="text-danger">Archivo: </strong>{{$ctrl.fileBase64.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cerrar</button>
+    <button type="submit" md-effect class="btn btn-primary" ng-disabled="!$ctrl.data.usuario.id_persona">
+      <i class="fa fa-check"></i>{{ $ctrl.items.esEdicion? 'Editar': 'Guardar'}}
+    </button>
+  </div>
+</form>

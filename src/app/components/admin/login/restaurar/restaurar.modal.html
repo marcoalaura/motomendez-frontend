@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h5 class="modal-title"><i class="fa fa-user"></i> Restaurar contraseña</h5>
+    <button type="button" class="close" data-dismiss="modal" ng-click="$ctrl.cancel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+  <div class="card" style="height: auto;">
+    <div class="card-body">
+      <div class="alert alert-info" role="alert">
+        <strong><i class="fa fa-info"> </i> </strong> El correo podría demorar unos minutos en llegar, no olvide revisar su bandeja de spam o correo no deseado.
+        <br>A continuación introduzca el código que aparece en el correo, seguido de su nueva contraseña y repíta la misma una vez más. 
+      </div>   
+      <form name="formRestaurar" ng-submit="$ctrl.restaurarPass()">
+          <b-input name="codigo" label="Código" ng-model="$ctrl.codigo" ng-required="true" icon="envelope-o"></b-input>
+          <b-input name="password" label="Contraseña" ng-model="$ctrl.password" ngMinlength="8" is-password="true" ng-required="true" icon="key"></b-input>
+          <b-input name="repeatPassword" label="Repita la contraseña" ng-model="$ctrl.repeatPassword" is-password="true" ng-required="true" icon="key"></b-input>
+          <div class="modal-footer">
+            <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+                <i class="fa fa-close"></i> Cancelar
+            </button>
+            <button md-effect type="submit" class="btn btn-primary">
+                <i class="fa fa-check"></i> Continuar
+            </button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+    
+</div>

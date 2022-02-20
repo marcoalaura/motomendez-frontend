@@ -1,0 +1,33 @@
+<form ng-submit="$ctrl.guardar(form)" name="form">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-user mr-2"></i>{{$ctrl.tituloPagina}}</h5>
+  </div>
+  <div class="modal-body">
+    <div class="card-block">
+      <div id="datoPersonales">
+        <div class="card">
+          <div class="card-header">
+            <div class="alert alert-info">
+              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+              <i class="fa fa-user"></i> Ingresar descripción del motivo de la baja y de la documentación de respaldo.
+            </div>
+            <div class="row">
+              <div class="col">
+                <b-textarea name="descripcion" label="Descripción:" ng-required="true" ng-model="$ctrl.descripcion" rows="7"></b-textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cerrar</button>
+    <button type="submit" md-effect class="btn btn-primary" ng-disabled="form.$invalid">
+      <i class="fa fa-check"></i>Guardar
+    </button>
+  </div>
+</form>

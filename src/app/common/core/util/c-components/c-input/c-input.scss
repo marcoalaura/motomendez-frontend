@@ -1,0 +1,224 @@
+// Shadows
+@import '../../../../styles/sass/_variables.scss';
+
+$shadow-inset: inset 0 2px 2px 0 rgba(0,0,0,.14);
+$shadow-0: 0 0 1px rgba(0, 0, 0, 0);
+$shadow-2: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+$shadow-3: 0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.2),0 1px 8px 0 rgba(0,0,0,.12);
+$shadow-4: 0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);
+$shadow-6: 0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12),0 3px 5px -1px rgba(0,0,0,.2);
+$shadow-8: 0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12),0 5px 5px -3px rgba(0,0,0,.2);
+
+// Font Sizes
+$mf-font-size: 1rem !default;
+$mf-active-font-size: $mf-font-size * 0.8 !default;
+$mf-active-top: -$mf-font-size !default;
+
+// Margin & Paddings
+$mf-gap: $mf-font-size * 1.5 !default;
+$mf-spacer: $mf-font-size / 8 !default;
+$mf-fieldset-margin: 0 0 $mf-gap * 2 !default;
+$mf-checkbox-gap: $mf-font-size * 2 !default;
+$mf-checkbox-top: 0 !default;
+$mf-radio-margin: $mf-font-size / -4 !default;
+
+// Colors
+$mf-input-color: #333 !default;
+$mf-border-color: #ccc !default;
+$mf-label-color: darken($mf-border-color, 10%) !default;
+$mf-active-color: darken($mf-border-color, 10%) !default;
+$mf-focus-color: $colorPrimary !default;
+$mf-error-color: #d9534f !default;
+
+// Animation
+$mf-transition-speed: 0.28s !default;
+
+.form-group-new{
+
+      position:relative;
+      margin-bottom: ($mf-gap *1.5);
+      margin-top: ($mf-gap *1.5);
+
+    input,textarea,select{
+      font-family: Montserrat;
+      //height: ($mf-font-size*1.9);
+      color: #888;
+      font-size: $mf-font-size;
+     // padding:$mf-spacer $mf-spacer ($mf-spacer / 2);
+      padding-bottom: $mf-spacer;
+      display:block;
+      left: 0;
+      background:none;
+      width:100%;
+      border:none;
+      border-color: transparent;
+      transition: all $mf-transition-speed ease;
+
+
+    }
+    textarea{
+     // height: ($mf-font-size*3.9);
+    }
+    input{
+      height: ($mf-font-size*1.9);
+    }
+    input:focus,textarea:focus,select:focus         { outline:none; }
+
+    /* LABEL ======================================= */
+    label                {
+      color: $mf-border-color;
+      font-size:$mf-font-size;
+      font-weight:normal;
+      position:absolute;
+      pointer-events:none;
+      left:0;
+      top: $mf-font-size*0.1;
+      transition:all $mf-transition-speed ease;
+      -moz-transition:all $mf-transition-speed ease;
+      -webkit-transition:all $mf-transition-speed ease;
+    }
+    input:not(focus):valid ~ label,textarea:not(focus):valid ~ label,select:not(focus):valid ~ label{
+      top: -($mf-font-size);
+      font-size: $mf-active-font-size;
+      color:$mf-border-color;
+    }
+
+    /* active state */
+    input:focus ~ label, textarea:focus ~label, select:focus ~label{
+      top: -($mf-font-size);
+      font-size: $mf-active-font-size;
+      color: $mf-focus-color;
+    }
+    input:focus:valid ~ label, textarea:focus:valid ~label, select:focus:valid ~label{
+        top: -($mf-font-size);
+        font-size: $mf-active-font-size;
+        color: $mf-focus-color;
+     }
+
+
+     input[required]:focus ~ label::after,textarea[required]:focus ~ label::after,  select[required]:focus ~ label::after{
+       content: '*';
+       color: #FA3031;
+       padding-left: 1px;
+     }
+     input[required] ~ label::after,textarea[required] ~ label::after,select[required] ~ label::after{
+       content: '*';
+       color:$mf-border-color;
+       padding-left: 1px;
+     }
+    input[disabled],textarea[disabled],select[disabled]{
+      background:transparent;
+      border-bottom-color: #888;
+     // height: ($mf-gap*1.53);
+      ~label{
+        top: -($mf-font-size);
+        font-size: $mf-active-font-size;
+        color: $mf-border-color;
+        background:transparent;
+      }
+
+    }
+    .ui-select-container:focus{
+      background: green;
+    }
+    /*  BARS ================================= */
+    .bar    {
+        position:relative;
+        display:block;
+        width:100%;
+        border-bottom: ($mf-font-size / 16) solid $mf-border-color;
+        &::before{
+           content:'';
+            height:1px;
+            width:0;
+            left: 50%;
+            bottom: ($mf-font-size / -16);
+            position:absolute;
+            background:$mf-focus-color;
+            transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -moz-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -webkit-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            z-index: 2;
+            border:0;
+        }
+        &::after{
+           content:'';
+            height:1px;
+            width:0;
+            right: 50%;
+            bottom: ($mf-font-size / -16);
+            position:absolute;
+            background:$mf-focus-color;
+            transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -moz-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -webkit-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            z-index: 2;
+            border:0;
+        }
+    }
+
+    .bar-error    {
+        position:relative;
+        display:block;
+        width:100%;
+        border-bottom: ($mf-font-size / 16) solid red;
+        &::before{
+           content:'';
+            height:1px;
+            width:0;
+            left: 50%;
+            //right: 50%;
+            bottom: ($mf-font-size / -16);
+            position:absolute;
+            background:$mf-error-color;
+            transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -moz-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -webkit-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            z-index: 2;
+            border:0;
+        }
+        &::after{
+           content:'';
+            height:1px;
+            width:0;
+            right: 50%;
+            bottom: ($mf-font-size / -16);
+            position:absolute;
+            background:$mf-error-color;
+            transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -moz-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            -webkit-transition:left $mf-transition-speed ease, width $mf-transition-speed ease;
+            z-index: 2;
+            border:0;
+        }
+    }
+
+    /* active state */
+    input:focus ~ .bar:before, input:focus ~ .bar:after ,select:focus ~ .bar:before{
+      width:50%;
+    }
+
+    /* HIGHLIGHTER ================================== */
+    .highlight {
+      position:absolute;
+      height:60%;
+      width:100px;
+      top:25%;
+      left:0;
+      pointer-events:none;
+      opacity:0.5;
+    }
+
+    /* active state */
+    input:focus ~ .highlight,textarea:focus ~ .highlight , select:focus ~ .highlight{
+      -webkit-animation:inputHighlighter 0.3s ease;
+      -moz-animation:inputHighlighter 0.3s ease;
+      animation:inputHighlighter 0.3s ease;
+    }
+}
+.error{
+   border-bottom: ($mf-font-size / 16) solid $mf-error-color !important;
+}
+.sin-error{
+  border-bottom: ($mf-font-size / 16) solid $mf-focus-color !important;
+}

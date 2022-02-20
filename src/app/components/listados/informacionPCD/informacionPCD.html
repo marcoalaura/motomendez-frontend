@@ -1,0 +1,292 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-blind"></i>
+    <strong>Información de Personas con Discapacidad</strong>
+  </h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="alert alert-primary col-md-12" role="alert">
+        <strong>Ingrese el número de Documento de Identidad:</strong>
+      </div>
+      <form ng-submit="$ctrl.buscar()">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-5">
+            <b-input label="Documento de Identidad" name="documento_identidad" ng-model="$ctrl.cedula_identidad" placeholder="Ej: 54455443"
+              ng-required="true"></b-input>
+          </div>
+          <div class="">
+            <button type="submit" class="btn btn-primary mx-0 float-right mt-4" ng-disabled="!$ctrl.cedula_identidad">
+              <i class="fa fa-search mr-2" aria-hidden="true"></i>Buscar
+            </button>
+          </div>
+        </div>
+      </form><br>
+      <div ng-if="$ctrl.datos.length > 0">
+        <h4 class="card-title">Resultados de la búsqueda</h4>
+        <div class="table-responsive">
+          <table class="table table-striped table-hover" style="text-align:center;">
+            <thead>
+              <tr>
+                <td><strong>Nro. DOCUMENTO</strong></td>
+                <td><strong>FECHA DE NACIMIENTO</strong></td>
+                <td><strong>NOMBRE</strong></td>
+                <td><strong>DETALLE</strong></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="pcd in $ctrl.datos">
+                <td>{{pcd.persona.documento_identidad}}</td>
+                <td>{{pcd.persona.fecha_nacimiento | date : 'dd/MM/yyyy'}}</td>
+                <td>{{pcd.persona.nombre_completo}}</td>
+                <td>
+                  <a href ng-click="$ctrl.detalle(pcd)">Ver</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br>
+      <div class="card" ng-if="$ctrl.var">
+        <div class="card-body">
+          <div class="col-md-12 alert alert-info" role="alert">
+            <span>INFORMACIÓN PERSONAL</span> 
+            <span ng-if="$ctrl.pcd.estado==='INACTIVO'" class="badge badge-primary">INACTIVO</span>
+            <button type="button" class="btn btn-outline-primary btn-sm float-right" ng-if="$ctrl.rol==='MINISTERIO' && $ctrl.pcd.estado==='ACTIVO'" ng-click="$ctrl.editar($ctrl.pcd)">
+              <i class="fa fa-edit mr-2" aria-hidden="true"></i>Modificar
+            </button>
+            <button type="button" class="btn btn-outline-primary btn-sm float-right mr-4" ng-if="$ctrl.rol==='MINISTERIO' && $ctrl.pcd.estado==='ACTIVO'" ng-click="$ctrl.inactivar($ctrl.pcd)">
+              <i class="fa fa-ban mr-2" aria-hidden="true"></i> Baja
+            </button>
+          </div>
+          <div class="col-md-12" class="table-resposive">
+            <div class="row">
+              <div class="col-lg-3 col-md-6">
+                <div class="row">
+                  <div class="form-group">
+                    <label>Nro. documento:</label>
+                    <div>{{$ctrl.pcd.persona.documento_identidad}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Complemento CI:</label>
+                    <div>{{$ctrl.pcd.persona.complemento_documento}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Fecha nacimiento:</label>
+                    <div>{{$ctrl.pcd.persona.fecha_nacimiento | date : 'dd/MM/yyyy'}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Expedido CI:</label>
+                    <div>{{$ctrl.pcd.persona.expedido}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="row">
+                  <div class="form-group">
+                    <label>Nombres:</label>
+                    <div>{{$ctrl.pcd.persona.nombres}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Primer apellido:</label>
+                    <div>{{$ctrl.pcd.persona.primer_apellido}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Segundo apellido:</label>
+                    <div>{{$ctrl.pcd.persona.segundo_apellido}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Apellido casada:</label>
+                    <div>{{$ctrl.pcd.persona.casada_apellido}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">               
+                <div class="row">
+                  <div class="form-group">
+                    <label>Estado civil:</label>
+                    <div>{{$ctrl.pcd.persona.estado_civil}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Formato información:</label>
+                    <div>{{$ctrl.pcd.persona.formato_inf}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Dirección:</label>
+                    <div>{{$ctrl.pcd.persona.direccion}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                <div class="row">
+                  <div class="form-group">
+                    <label>Departamento:</label>
+                    <div>{{$ctrl.pcd.pcd_dpa.departamento}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Provincia:</label>
+                    <div>{{$ctrl.pcd.pcd_dpa.provincia}}</div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <label>Municipio:</label>
+                    <div>{{$ctrl.pcd.pcd_dpa.municipio}}</div>
+                  </div>
+                </div>                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 alert alert-info" role="alert">
+            INFORMACIÓN DE TUTOR(S)
+          </div>
+          <div ng-if="$ctrl.pcd.pcd_tutor.length > 0" class="col-md-12" class="table-resposive">
+            <table class="table table-striped table-hover" style="text-align:center;">
+              <thead>
+                <tr>
+                  <!-- <td>
+                    <strong>Acciones</strong>
+                  </td> -->
+                  <td>
+                    <strong>C.I.</strong>
+                  </td>
+                  <td>
+                    <strong>NOMBRE</strong>
+                  </td>
+                  <!-- <td>
+                    <strong>TELÉFONO</strong>
+                  </td> -->
+                  <td>
+                    <strong>DOCUMENTO DE RESPALDO</strong>
+                  </td>
+                  <td>
+                    <strong>ESTADO</strong>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="pcd_tutor in $ctrl.pcd.pcd_tutor">
+                  <!-- <td>
+                    <button  md-effect class="button-small btn-outline-primary" >
+                      
+                    </button>
+                    <a href="" uib-tooltip="Ver Documento de Respaldo" ng-click="$ctrl.mostrar_pdf()">
+                      <i class="fa fa-file-pdf-o fa-2x"></i>
+                    </a>
+                  </td> -->
+                  <td>{{pcd_tutor.persona.documento_identidad}}</td>
+                  <td>{{pcd_tutor.persona.nombre_completo}}</td>
+                  <!-- <td>{{pcd_tutor.persona.telefono}}</td> -->
+                  <td>{{pcd_tutor.documento_descripcion}}</td>
+                  <td>{{pcd_tutor.estado}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div ng-if="$ctrl.pcd.pcd_tutor.length < 1" class="col-md-12">
+            No existe registro de tutor(s).
+          </div>
+
+          <div class="col-md-12 alert alert-info" role="alert">
+            INFORMACIÓN DE CERTIFICADOS
+          </div>
+          <div class="col-md-12" class="table-resposive">
+            <table class="table table-striped table-hover" style="text-align:center;">
+              <thead>
+                <tr>
+                  <td>
+                    <strong>FECHA DE EMISIÓN</strong>
+                  </td>
+                  <td>
+                    <strong>VIGENCIA</strong>
+                  </td>
+                  <td>
+                    <strong>CERTIFICADO</strong>
+                  </td>
+                  <td>
+                    <strong>TIPO DE DISCAPACIDAD</strong>
+                  </td>
+                  <td>
+                    <strong>GRADO DE DISCAPACIDAD</strong>
+                  </td>
+                  <td>
+                    <strong>PORCENTAJE DE DISCAPACIDAD</strong>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="pcd_certificado in $ctrl.pcd.pcd_certificado">
+                  <td>{{pcd_certificado.fecha_emision | date : 'dd/MM/yyyy'}}</td>
+                  <td>{{pcd_certificado.fecha_vigencia | date : 'dd/MM/yyyy'}}</td>
+                  <td>{{pcd_certificado.tipo_certificado}}</td>
+                  <td>{{pcd_certificado.tipo_discapacidad}}</td>
+                  <td>{{pcd_certificado.grado_discapacidad}}</td>
+                  <td>{{pcd_certificado.porcentaje_discapacidad}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-md-12 alert alert-info" role="alert">
+            INFORMACIÓN DE BENEFICIOS
+          </div>
+          <div class="col-md-12" class="table-resposive">
+            <table ng-if="$ctrl.beneficios.length > 0" class="col-md-12 table table-striped table-hover" ng-table="$ctrl.tableParams" style="text-align:center;">
+              <thead>
+                <tr>
+                  <td>
+                    <strong>MES/GESTION</strong>
+                  </td>
+                  <td>
+                    <strong>BENEFICIO</strong>
+                  </td>
+                  <td>
+                    <strong>OTORGADO POR</strong>
+                  </td>
+                  <td>
+                    <strong>NIT/MATRICULA</strong>
+                  </td>
+                  <td>
+                    <strong>CI/NOMBRE(TUTOR)</strong>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="beneficio in $ctrl.beneficios">
+                  <td>{{beneficio.mes}} - {{beneficio.fid_gestion}}</td>
+                  <td>{{beneficio.beneficio.nombre_beneficio}}</td>
+                  <td>{{beneficio.beneficio.institucion}}</td>
+                  <td>{{beneficio.nit}}<span ng-if="beneficio.matricula"> - {{beneficio.matricula}}</span></td>
+                  <td>{{beneficio.tutor_ovt.documento_identidad}} - {{beneficio.tutor_ovt.primer_apellido}} {{beneficio.tutor_ovt.segundo_apellido}} {{beneficio.tutor_ovt.nombres}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-12">{{$ctrl.mensaje}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+
+

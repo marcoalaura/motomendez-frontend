@@ -1,0 +1,228 @@
+@import '../../../styles/sass/_variables.scss';
+
+.input-group-btn {
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    .btn {
+        padding: 0.6rem 0.8rem;
+    }
+}
+
+
+.crud-table {
+
+    .ng-table-filters [data-title-text="Acciones"] {
+        &::before {
+            content: 'Filtros: ';
+            line-height: 2.8rem;
+            font-weight: 600;
+            text-align: right;
+            display: block;
+        }
+    }
+
+    &-form-inline {
+        position: relative;
+
+        .formly {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding-right: 42px;
+
+            & > .formly-field {
+                -webkit-flex-basis: 0;
+                -ms-flex-preferred-size: 0;
+                flex-basis: 0;
+                -webkit-box-flex: 1;
+                -webkit-flex-grow: 1;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+                max-width: 100%;
+            }
+
+            .form-group {                
+                label:not(.error) {
+                    font-size: 0.75rem;
+                }
+
+                .checkbox {
+                    margin: 26px 0 0 6px;
+
+                    label {
+                        margin: 0;
+                        position: relative;
+                        padding-left: 20px;
+
+                        input {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+
+                .radio {
+                    label {
+                        margin: 0 0 0 8px;
+                        text-transform: none;
+                        font-weight: 600;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+            .form-control {
+                border-radius: 0;
+                font-size: 12px;
+                padding: 9px 6px;
+            }
+
+            .input-group {
+                .btn {
+                    padding: 0 8px;
+                }
+            }
+        }
+
+        .btn-primary {
+            padding: 0.67rem .8rem;
+            position: absolute;
+            top: 27px;
+            right: 0;
+        }
+    }
+
+    table tbody td {
+        font-size: 0.9rem;
+    }
+
+    &-table-inline {
+        tbody tr td{
+            font-size: 0.85rem;
+            line-height: 1rem;
+        }
+    }
+
+    .edit-item-block {
+        position: relative;
+
+        .edit-item-block-backdrop {
+            background-color: rgba(0, 0, 0, 0.15);
+            bottom: 0;
+            content: '';
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 1;
+
+            &::before {
+                content: "Haga clic aquí para cancelar la edición";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1.5rem;
+                color: #fff;
+                text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .edit-item {
+        background-color: lighten($colorWarning, 25%) !important;
+    }
+
+    .btn-actions {
+        white-space: nowrap;
+
+        .btn {
+            text-align: center;
+            
+            .fa {
+            font-size: 1rem;
+            }
+        }
+    }
+
+    .ng-table-header {
+        font-size: 0.95rem;
+        line-height: 1.1rem;
+        white-space: nowrap;
+    }
+
+    .form-search .form-control {
+        min-width: 300px;
+    }
+
+    // .ng-table-sort-header .header,
+    .ng-table-filters .filter {
+        border: none;
+    }
+
+    // .ng-table-filters .filter:last-child {
+    //     position: relative;
+
+    //     &:after{
+    //         content: attr(data-content);
+    //         position: absolute;
+    //         top: -38px;
+    //         right: -100px;
+    //         display: block;
+    //         line-height: 36px;
+    //         border-bottom: 2px solid #eceeef;
+    //         border-top: 1px solid #eceeef;
+    //         width: 100px;
+    //         font-size: .95rem;
+    //     }
+    // }
+}
+
+.ng-table-counts {
+    .btn {
+        padding: 0.7rem 1rem;
+
+        &.active {
+            background-color: $colorPrimary;
+            color: white;
+        }
+    }
+
+    &:before {
+        content: attr(data-content);
+        padding: .7rem .9rem;
+        color: #555;
+        font-weight: 600;
+        font-size: .9rem;
+    }
+}
+
+.ng-table-pagination {
+    &:after {
+        content: attr(data-content);
+        padding: .7rem .9rem;
+        color: #555;
+        font-weight: 600;
+        font-size: .9rem;
+    }
+}
+
+.page-item {
+    .page-link {        
+        border: none;
+        color: $colorPrimary;
+        padding: 0.7rem 1rem;
+    }
+    &.active {
+        .page-link {            
+            background-color: $colorPrimary;
+            color: white;
+        }
+    }
+}

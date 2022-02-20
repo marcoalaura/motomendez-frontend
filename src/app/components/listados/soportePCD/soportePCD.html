@@ -1,0 +1,22 @@
+<div class="px-4">
+  <h2 class="page-title">
+    <i class="fa fa-blind"></i>
+    <strong>Solicitud de Soporte</strong>
+  </h2>
+  <div class="card">
+    <div class="card-header">
+      <div class="alert alert-primary col-md-12" role="alert">
+        <strong>Para solicitar soporte registre el incidente y describa a detalle su consulta:</strong>
+      </div>
+      <form name="form">
+        <b-input label="Incidente" name="incidente" ng-model="$ctrl.incidente" ng-required="true"></b-input>
+        <b-textarea label="Descripcion" name="descripcion" ng-model="$ctrl.descripcion" ng-required="true"></b-textarea>
+          <div class="">
+            <button type="submit" class="btn btn-primary mx-0 float-right mt-4" ng-disabled="form.$invalid" ng-click="$ctrl.enviar(form)">
+              <i class="fa fa-paper-plane mr-2" aria-hidden="true"></i>Enviar
+            </button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

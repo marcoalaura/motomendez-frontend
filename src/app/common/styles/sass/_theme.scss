@@ -1,0 +1,616 @@
+// Configurar los colores principales del sistema
+
+@import '_variables.scss';
+
+// General
+a {
+  color: $colorPrimary;
+
+  &:hover, &:focus, &:active {
+    color: $colorPrimary;
+  }
+}
+
+.container {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.text-muted, .ui-select-match-text {
+  text-transform: none;
+}
+
+// Variables Colores
+$white: #FFFFFF;
+
+$btn-primary-color:              $white;
+$btn-primary-bg:                 $colorPrimary;
+$btn-primary-border:             $btn-primary-bg;
+
+$btn-secondary-color:            #292b2c;
+$btn-secondary-bg:               $white;
+$btn-secondary-border:           #ccc;
+
+$btn-info-color:                 $white;
+$btn-info-bg:                    $colorInfo;
+$btn-info-border:                $btn-info-bg;
+
+$btn-success-color:              $white;
+$btn-success-bg:                 $colorSuccess;
+$btn-success-border:             $btn-success-bg;
+
+$btn-warning-color:              $white;
+$btn-warning-bg:                 $colorWarning;
+$btn-warning-border:             $btn-warning-bg;
+
+$btn-danger-color:               $white;
+$btn-danger-bg:                  $colorDanger;
+$btn-danger-border:              $btn-danger-bg;
+
+@mixin button-variant($color, $background, $border) {
+  $active-background: lighten($background, 4%);
+  $active-border: lighten($border, 6%);
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  // Hover and focus styles are shared
+  &:hover {
+    color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
+
+    &[md-effect] {
+      box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+    }
+  }
+
+  &:focus,
+    &.focus {
+    &[md-effect] {
+      box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+    }
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    background-color: $background;
+    border-color: $border;
+  }
+
+  &:active,
+    &.active,
+    .show > &.dropdown-toggle {
+    color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+}
+
+@mixin button-outline-variant($color, $color-hover: #fff) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+
+  &:hover {
+    color: $color-hover;
+    background-color: $color;
+    border-color: $color;
+
+    &[md-effect] {
+      box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+    }
+  }
+
+  &:focus,
+    &.focus {
+    &[md-effect] {
+      box-shadow: 0 5px 11px 0 rgba(0,0,0,.18),0 4px 15px 0 rgba(0,0,0,.15);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:active,
+    &.active,
+    .show > &.dropdown-toggle {
+    color: $color-hover;
+    background-color: $color;
+    border-color: $color;
+  }
+}
+
+.btn-link {
+  color: $colorPrimary;
+
+  &:hover,
+    &:focus,
+    &:active {
+    color: darken($colorPrimary, 10%);
+  }
+}
+
+// Buttons
+.btn {
+  border-radius: 2px;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  padding: .9rem 1.7rem;
+  text-transform: uppercase;
+
+  .fa {
+    font-size: 1.2rem;
+    margin-top: -2px;
+    margin-right: 2px;
+  }
+}
+
+.btn-sm, .btn-group-sm > .btn {
+  padding: 0.3rem 0.8rem;
+  letter-spacing: 0;
+}
+
+#toast-container > div,
+.popover,
+.btn[md-effect],
+.card {
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+  border-radius: 2px;
+}
+
+.btn-primary {
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+}
+// .btn-secondary,
+// .btn-default {
+//   @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+// }
+.btn-info {
+  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border);
+}
+.btn-success {
+  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border);
+}
+.btn-warning {
+  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+}
+.btn-danger {
+  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+}
+
+// Remove all backgrounds
+.btn-outline-primary {
+  @include button-outline-variant($btn-primary-bg);
+}
+.btn-outline-secondary,
+.btn-outline-default {
+  @include button-outline-variant($btn-secondary-border);
+}
+.btn-outline-info {
+  @include button-outline-variant($btn-info-bg);
+}
+.btn-outline-success {
+  @include button-outline-variant($btn-success-bg);
+}
+.btn-outline-warning {
+  @include button-outline-variant($btn-warning-bg);
+}
+.btn-outline-danger {
+  @include button-outline-variant($btn-danger-bg);
+}
+
+.btn-secondary,
+.btn-default {
+  background-color: white;
+  border: 1px solid transparent;
+  box-shadow: none !important;
+
+  &:hover {
+    background-color: #eeeeee;
+    border: 1px solid #eeeeee;
+  }
+}
+
+// background color
+.bg-primary, {
+  background-color: $colorPrimary !important;
+}
+.bg-secondary, {
+  background-color: $colorSecondary !important;
+}
+.bg-info, {
+  background-color: $colorInfo !important;
+}
+.bg-success, {
+  background-color: $colorSuccess !important;
+}
+.bg-warning, {
+  background-color: $colorWarning !important;
+}
+.bg-danger, {
+  background-color: $colorDanger !important;
+}
+
+// Text color
+.text-primary, a.text-primary {
+  color: $colorPrimary !important;
+  &:hover, &:focus {
+    color: $colorPrimary !important;
+  }
+}
+.text-secondary, a.text-secondary {
+  color: $colorSecondary !important;
+  &:hover, &:focus {
+    color: $colorSecondary !important;
+  }
+}
+.text-info, a.text-info {
+  color: $colorInfo !important;
+  &:hover, &:focus {
+    color: $colorInfo !important;
+  }
+}
+.text-success, a.text-success {
+  color: $colorSuccess !important;
+  &:hover, &:focus {
+    color: $colorSuccess !important;
+  }
+}
+.text-warning, a.text-warning {
+  color: $colorWarning !important;
+  &:hover, &:focus {
+    color: $colorWarning !important;
+  }
+}
+.text-danger, a.text-danger {
+  color: $colorDanger !important;
+  &:hover, &:focus {
+    color: $colorDanger !important;
+  }
+}
+
+.progress-bar {
+  background-color: $colorPrimary;
+}
+
+// Form
+
+.form-group {
+  label:not(.error) {
+    font-family: 'Montserrat';
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  .help {
+    font-size: 12px;
+    color: rgba(98,98,98,0.55);
+  }
+}
+.form-control {
+  background-color:#ffffff;
+  background-image:none;
+  border:1px solid rgba(0,0,0,0.07);
+  font-family:Arial,sans-serif;
+  -webkit-appearance:none;
+  color:#2c2c2c;
+  outline:0;
+  // height:35px;
+  padding:9px 12px;
+  line-height:normal;
+  font-family: 'Montserrat', Arial, helvetica, sans-serif;
+  font-size:14px;
+  font-weight:normal;
+  vertical-align:middle;
+  min-height:35px;
+  -webkit-transition:all 0.12s ease;
+  transition:all 0.12s ease;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  border-radius:2px;
+  -webkit-border-radius:2px;
+  -moz-border-radius:2px;
+  -webkit-transition:background 0.2s linear 0s;
+  transition:background 0.2s linear 0s;
+
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #bbb;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: #bbb;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: #bbb;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    color: #bbb;
+  }
+}
+.form-control:focus {
+  border-color:rgba(0,0,0,0.1);
+  background-color:#f0f0f0;
+  outline:0 !important;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+
+  option {
+    outline:0 !important;
+  }
+}
+.has-danger, .has-error {
+  .form-control {
+    background-color: lighten($colorDanger, 32%);
+    &:focus {
+      border-color: $colorDanger;
+      background-color: lighten($colorDanger, 32%);
+    }
+  }
+}
+
+.form-control:focus::-moz-placeholder,
+.form-control:focus:-ms-input-placeholder,
+.form-control:focus::-webkit-input-placeholder {
+  color:inherit;
+  opacity:0.7;
+}
+.form-control::-moz-placeholder,
+.form-control:-ms-input-placeholder,
+.form-control::-webkit-input-placeholder {
+  color:inherit;
+  opacity:0.33;
+}
+.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control {
+  background:#f8f8f8;
+  color:rgba(98,98,98,0.85);
+}
+.form-control.transparent {
+  background-color:transparent;
+  border-color:transparent;
+}
+.form-control.transparent:focus {
+  background-color:transparent;
+  border-color:transparent;
+}
+.input-sm,.form-horizontal .form-group-sm .form-control {
+  font-size:13px;
+  min-height:32px;
+  height:32px;
+  padding:8px 9px;
+}
+.input-lg,.form-horizontal .form-group-lg .form-control {
+  border-radius:3px;
+  font-size:18px;
+  height:45px;
+  padding:11px 13px;
+}
+
+.input-group .form-control:first-child {
+  -webkit-border-top-right-radius:0;
+  -moz-border-radius-topright:0;
+  border-top-right-radius:0;
+  -webkit-border-bottom-right-radius:0;
+  -moz-border-radius-bottomright:0;
+  border-bottom-right-radius:0;
+}
+.input-group-addon:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+// Alerts
+@mixin alert-variant($color, $bg: 30%, $textColor: 0%) {
+  background-color: lighten($color, $bg) !important;
+  border-color: lighten($color, $bg - 5%);
+  border-left: 5px solid lighten($color, 10%);
+  border-radius: 0;
+  color: darken($color, $textColor);
+}
+
+.alert-primary {
+  @include alert-variant($colorPrimary, 55%);
+}
+.alert-success {
+  @include alert-variant($colorSuccess, 58%);
+}
+.alert-info {
+  @include alert-variant($colorInfo, 52%);
+}
+.alert-warning {
+  @include alert-variant($colorWarning, 28%, 23%);
+}
+.alert-danger {
+  @include alert-variant($colorDanger);
+}
+
+// Badge
+.badge {
+  font-weight: normal;
+  font-size: .9rem;
+  border-radius: 2px;
+  padding: 0.3em 0.6em;
+}
+.badge-default {
+  background-color: $colorSecondary;
+}
+.badge-primary {
+  background-color: $colorPrimary;
+}
+.badge-success {
+  background-color: $colorSuccess;
+}
+.badge-info {
+  background-color: $colorInfo;
+}
+.badge-warning {
+  background-color: $colorWarning;
+}
+.badge-danger {
+  background-color: $colorDanger;
+}
+
+.custom-checkbox .custom-control-indicator {
+  border-radius: .15rem;
+}
+.custom-control {
+  padding-left: 2rem;
+  border-radius: 50%;
+
+  &-indicator {
+    top: 0;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  &-input:checked ~ &-indicator {
+    background-color: $colorPrimary;
+    top: 0;
+
+  }
+  .custom-control-input:focus ~ .custom-control-indicator {
+    -webkit-box-shadow: none;
+  }
+}
+
+// dropdown
+.dropdown-menu {
+  border: 0;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  border-radius: 0;
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),
+    0 8px 10px 1px rgba(0,0,0,.14),
+    0 3px 14px 2px rgba(0,0,0,.12);
+}
+.dropdown-item {
+  cursor: pointer;
+  user-select: none;
+  outline: 0;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  height: 44px;
+  line-height: 44px;
+  padding: 0 18px;
+  font-size: 1rem;
+
+  .fa {
+    font-size: 1.2rem;
+    margin-top: -2px;
+    margin-right: 2px;
+  }
+
+  &:active,
+    &:focus {
+    background-color: $colorPrimary;
+  }
+}
+
+// Modal
+.modal-backdrop.in {
+  opacity: .4 !important;
+}
+.modal-content {
+  box-shadow: 0 11px 15px -7px rgba(0,0,0,.2),
+    0 24px 38px 3px rgba(0,0,0,.14),
+    0 9px 46px 8px rgba(0,0,0,.12);
+  border-radius: 2px;
+  padding: 10px 10px 0 10px;
+}
+.modal-header,
+.modal-footer {
+  border: none;
+}
+.modal-title {
+  color: #303030;
+  font-weight: 600;
+}
+.modal-header .close {
+  margin: -10px 0px 0 0;
+  font-size: 24px;
+}
+
+// ui-select
+.ui-select-container::before {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #bbb;
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 17px;
+  z-index: 1;
+}
+
+.ui-select-container:hover::before {
+  border-top-color: $colorPrimary;
+}
+
+.ui-select-container {
+  .ui-select-choices-row > span {
+    padding: 9px 20px;
+  }
+
+  .ui-select-choices-row.active > span {
+    background-color: $colorPrimary;
+  }
+  .ui-select-choices {
+    z-index: 10001;
+  }
+  .ui-select-match-text {
+    white-space: normal;
+  }
+  .ui-select-choices-row-inner > .ng-binding {
+    white-space: normal;
+  }
+}
+
+.md-select {
+  &.ui-select-container {
+    .form-control {
+      background-color: transparent;
+      border: none;
+      border-radius: none;
+    }
+
+    .btn-default-focus {
+      box-shadow: none;
+      background-color: transparent;
+      border: none;
+    }
+
+    .text-muted {
+      color: transparent !important;
+    }
+  }
+}
+
+.modal-extra-large {
+  max-width: 990px;
+}
+.modal-medium {
+  max-width: 600px;
+}
+.uib-datepicker-popup.dropdown-menu {
+  z-index: 1060;
+}
+
+.form-error {
+  position: absolute;
+  color: #f35958;
+  font-size: 0.8rem;
+  bottom: -18px;
+  left: 0;
+}
+
+.md-input-group-addon + md-input + .form-error {
+  left: 28px;
+}

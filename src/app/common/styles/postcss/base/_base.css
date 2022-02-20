@@ -1,0 +1,26 @@
+html, body {
+    background-color: #E5E9EC;
+    color: #777777;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    font-weight: normal;
+    height: 100%;
+}
+
+.page-title {
+    color: #666;
+    display: block;
+    font-size: 1.7rem;
+    font-weight: normal;
+    letter-spacing: -1px;
+    margin: 0 0 20px;
+    padding: 0px;
+
+    strong {
+        font-weight: 600;
+    }
+
+    .fa {
+        font-size: 1.4rem;
+    }
+}

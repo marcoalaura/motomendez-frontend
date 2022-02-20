@@ -1,0 +1,70 @@
+<div class="col-md-12">
+  <h1 class="page-title">
+    <i class="fa fa-users"></i> Usuarios</h1>
+  <div class="card ">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <div class="btn-container p-2">
+          <button class="btn btn-primary" md-effect ng-click="$ctrl.add()" type="button" uib-tooltip="Agregar nuevo registro">
+            <i class="fa fa-plus"></i> Agregar</button>
+          <button class="btn btn-default" md-effect type="button" ng-click="$ctrl.refresh()" uib-tooltip="Actualizar tabla">
+            <i class="fa fa-refresh"></i>
+          </button>
+        </div>
+      </div>
+      <div class="table-responsive py-3">
+        <table class="table table-bordered table-striped table-hover" ng-table="$ctrl.tableParams" style="text-align:center;">
+          <thead>
+            <tr>
+              <td>
+                <strong>ACCIONES</strong>
+              </td>
+              <td>
+                <strong>APELLIDOS + NOMBRES</strong>
+              </td>
+              <td>
+                <strong>CORREO ELECTRÓNICO</strong>
+              </td>
+              <td>
+                <strong>ROL</strong>
+              </td>
+              <td>
+                <strong>MUNICIPIO</strong>
+              </td>
+              <td>
+                <strong>ESTADO</strong>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in $data">
+            <!-- <tr ng-repeat="user in $data" ng-if="user.usuarios_roles[0].rol.id_rol == 2 || user.usuarios_roles[0].rol.id_rol == 3 || user.usuarios_roles[0].rol.id_rol == 4"> -->
+              <td>
+                <a href=""  uib-tooltip="Editar" ng-click="$ctrl.verEditar(user)"
+                ng-show="user.estado === 'PENDIENTE'"><i class="fa fa-edit fa-2x"></i></a>
+                <a href="" uib-tooltip="Dar de baja" ng-click="$ctrl.eliminar(user)"
+                ng-hide="user.estado === 'INACTIVO' || user.estado === 'PENDIENTE'"><i class="fa fa-trash fa-2x"></i></a>
+                <a href="" uib-tooltip="Reenviar correo de activación"  ng-if="user.estado === 'PENDIENTE'"  ng-click="$ctrl.reenviarCorreo(user)"><i class="fa fa-send-o fa-2x"></i></a>
+              </td>
+              <td>
+                {{user.persona.nombre_completo}}
+              </td>
+              <td>
+                {{user.email}}
+              </td>
+              <td>
+                {{user.usuarios_roles[0].rol.nombre}}
+              </td>
+              <td>
+                  <div ng-if="user.dpa">{{user.dpa.municipio}} - {{user.dpa.provincia}}/{{user.dpa.departamento}}</div>
+              </td>
+              <td>
+                {{user.estado}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

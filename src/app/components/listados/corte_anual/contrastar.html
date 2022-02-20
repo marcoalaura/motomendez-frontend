@@ -1,0 +1,22 @@
+<form name="validador" enctype="multipart/form-data">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa fa-file-text-o"></i> {{$ctrl.tituloPagina}}
+    </h5>
+  </div>
+  <div class="modal-body">
+    <div class="card-block">
+      <div class="form-group">
+        <h6 for="exampleInputFile">Gestión {{$ctrl.gestion}}.</h6><p/>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button md-effect type="button" class="btn btn-danger" ng-click="$ctrl.cancel()">
+      <i class="fa fa-close"></i> Cancelar
+    </button>
+    <button md-effect type="button" class="btn btn-primary" ng-click="$ctrl.contrastar()">
+      <i class="fa fa-filter"></i> Contrastar información
+    </button>
+  </div>
+</form>

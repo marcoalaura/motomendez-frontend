@@ -1,0 +1,78 @@
+<div class="login container">
+  <div class="login-container" ng-if="!$ctrl.datos_prueba">
+    <div class="login-form">
+      <div class="login-logo">
+        <div class="logo-probolivia"></div>
+      </div>
+      <div class="text-center text-primary font-weight-bold" style="font-size: 25px; margin-bottom:50px;">
+        PLATAFORMA PLURINACIONAL DE INFORMACIÓN DE PERSONAS CON DISCAPACIDAD
+        <br>"EUSTAQUIO MOTO MÉNDEZ"
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-8 col-xl-8 offset-md-2 offset-xl-2">
+            <div class="card" style="height: 340px;">
+              <div style="border-top: 5px solid #274461">
+                <h1 style="text-align:center; color:#274461; font-size: 18px;font-weight: bold; margin-bottom: 34px; margin-top: 15px;">
+                  <i class="px-2 fa fa-key"></i>
+                  RESTAURAR CONTRASEÑA
+                </h1>
+              </div>
+              <div class="card-body">
+                <div class="alert alert-primary col-md-12" role="alert">
+                  <strong><i class="fa fa-info"> </i> </strong> Se le enviará un correo con los pasos a seguir para continuar con la restauración de su contraseña.
+                </div>   
+                <form name="formSolicitud" ng-submit="$ctrl.solicitaCodigo()">
+                  <b-email name="correo" type="email"  placeholder="ejemplo@email.com" label="Correo Electrónico" ng-model="$ctrl.correo" ng-required="true" icon="envelope-o"></b-email>
+                  <div class="modal-footer">
+                    <button md-effect type="button" class="btn btn-danger btn-md btn-block mt-4" ng-click="$ctrl.goLogin()">
+                      <i class="fa fa-close"></i> Cancelar
+                    </button>
+                    <button md-effect class="btn btn-primary btn-md btn-block mt-4" type="submit" ng-disabled="formSolicitud.$invalid">
+                        enviar <i class="fa fa-sign-in"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="text-primary text-center mt-4">
+              <div class="texto-titulo font-weight-bold">
+                Si tiene dudas o consultas
+              </div>
+              <div class="mt-2">
+                Contáctese con los teléfonos:
+                <br>
+                <ul>
+                  <li>
+                    2120441
+                    <i class="fa fa-phone ml-2" aria-hidden="true"></i>
+                    <br>
+                  </li>
+                  <li>
+                    63195237
+                    <i class="fa fa-whatsapp text-success" aria-hidden="true"></i>
+                    <br>
+                  </li>
+                </ul>
+                o escriba al correo:
+                <strong>soporte@agetic.gob.bo </strong>
+              </div>
+              </br>
+              <a href="images/guia_usuario1.pdf" target="_blank"> Guía de Uso del Sistema
+                <i class="fa fa-file-pdf-o text-danger" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
